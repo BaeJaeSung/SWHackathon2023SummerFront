@@ -1,7 +1,7 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+// import { Noto_Sans } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+// const noto = Noto_Sans({ subsets: ['latin'], weight:['400','600','700'] })
 
 export const metadata = {
   title: 'hackathon',
@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <main className="flex h-screen w-full items-center justify-center bg-cyan-500">
           <div className="h-full w-full max-w-lg bg-white">{children}</div>
         </main>
