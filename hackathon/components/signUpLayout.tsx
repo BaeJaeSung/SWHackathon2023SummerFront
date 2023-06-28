@@ -19,12 +19,12 @@ export default function SignUpLayout({
 }: SignupLayoutProps) {
   return (
     <div className="flex h-full flex-col justify-between px-10 py-16">
-      <h2 className="text-3xl font-bold">
+      <h2 className="text-3xl font-bold leading-relaxed">
         {textTop}
         <br />
         {textBottom}
       </h2>
-      <div>{children}</div>
+      <div className="mt-12 h-full">{children}</div>
       <button
         className="btn w-full border-none bg-gray-500 text-white"
         onClick={btnEvent}
