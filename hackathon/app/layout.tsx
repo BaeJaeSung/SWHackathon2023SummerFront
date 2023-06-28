@@ -1,3 +1,4 @@
+import Footer from '@/components/footer'
 import './globals.css'
 import Header from '@/components/header'
 // import { Noto_Sans } from 'next/font/google'
@@ -18,9 +19,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="flex h-screen w-full flex-wrap items-center justify-center bg-slate-300">
-          <div className="h-full w-full max-w-lg bg-white">
+          <div className="flex h-full w-full max-w-lg flex-col justify-between bg-white">
             <Header />
             <main className="">{children}</main>
+            <Footer />
           </div>
         </div>
       </body>
