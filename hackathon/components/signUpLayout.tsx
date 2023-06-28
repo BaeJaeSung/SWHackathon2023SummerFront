@@ -1,10 +1,13 @@
-import type { ReactNode } from 'react'
+'use client'
+
+import type { MouseEventHandler, ReactNode } from 'react'
 
 interface SignupLayoutProps {
   children: ReactNode
   textTop: string
   textBottom: string
   btnText: string
+  btnEvent: MouseEventHandler
 }
 
 export default function SignUpLayout({
@@ -12,6 +15,7 @@ export default function SignUpLayout({
   textTop,
   textBottom,
   btnText,
+  btnEvent,
 }: SignupLayoutProps) {
   return (
     <div className="flex h-full flex-col justify-between px-10 py-16">
@@ -21,7 +25,10 @@ export default function SignUpLayout({
         {textBottom}
       </h2>
       <div>{children}</div>
-      <button className="btn w-full border-none bg-gray-500 text-white">
+      <button
+        className="btn w-full border-none bg-gray-500 text-white"
+        onClick={btnEvent}
+      >
         {btnText}
       </button>
     </div>
