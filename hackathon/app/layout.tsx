@@ -21,8 +21,8 @@ export default function RootLayout({
         <div className="flex h-screen w-full flex-wrap items-center justify-center bg-slate-300">
           <div className="flex h-full w-full max-w-lg flex-col justify-between bg-white">
             <Header />
-            <main className="">{children}</main>
-            <Footer />
+            <main className="h-full w-full">{children}</main>
+            {/* <Footer /> */}
           </div>
         </div>
       </body>
