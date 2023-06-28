@@ -1,9 +1,9 @@
 import Footer from '@/components/footer'
 import './globals.css'
 import Header from '@/components/header'
-// import { Noto_Sans } from 'next/font/google'
+import { Noto_Sans } from 'next/font/google'
 
-// const noto = Noto_Sans({ subsets: ['latin'], weight:['400','600','700'] })
+const noto = Noto_Sans({ subsets: ['latin'], weight: ['400', '600', '700'] })
 
 export const metadata = {
   title: 'hackathon',
@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={noto.className}>
         <div className="flex h-screen w-full flex-wrap items-center justify-center bg-slate-300">
           <div className="flex h-full w-full max-w-lg flex-col justify-between bg-white">
             <Header />
