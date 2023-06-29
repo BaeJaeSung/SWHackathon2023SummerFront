@@ -22,29 +22,29 @@ export default function GridCard() {
         시작했어요!
       </div>
 
-      <div className="mb-3 font-semibold text-[#292929]">
+      <div className="mb-1 font-semibold text-[#292929]">
         학력<span className="font-normal text-[#292929]">&nbsp;대졸</span>
       </div>
-      <div className="mb-3 font-semibold text-[#292929]">
+      <div className="mb-4 font-semibold text-[#292929]">
         아르바이트 근무 경험
         <span className="font-normal text-[#292929]">&nbsp;있음</span>
       </div>
 
-      <div className="mb-3 grid items-center justify-between">
+      <div className="mb-5 grid items-center justify-between">
         <div className="flex">
-          <div className="bg-gray mr-4 h-48 w-1 rounded-sm bg-[#8F00FF]">
+          <div className="bg-gray mr-4 h-48 w-1 rounded-sm bg-[#00396E]">
             &nbsp;
           </div>
           <div className="w-full  rounded-lg bg-[#ECEFF4] p-5">
-            <div className="mb-3 font-semibold text-[#292929]">
+            <div className="mb-3 font-semibold text-[#00396E]">
               회사명
               <span className="font-normal text-[#292929]">&nbsp;우리카페</span>
             </div>
-            <div className="mb-3 font-semibold text-[#292929]">
+            <div className="mb-3 font-semibold text-[#00396E]">
               근무기간
               <span className="font-normal text-[#292929]">&nbsp;3개월</span>
             </div>
-            <div className="font-semibold text-[#292929]">
+            <div className="font-semibold text-[#00396E]">
               근무를 통한 나의 경험
               <p className="mt-1 font-normal text-[#292929]">
                 커피 만드는 것이 즐거웠고, 근무하면서
@@ -55,7 +55,7 @@ export default function GridCard() {
         </div>
       </div>
 
-      <div className="mb-3 font-semibold text-white">
+      <div className="mb-3 font-semibold text-[#292929]">
         사진
         <div className="my-3 w-full overflow-x-auto whitespace-nowrap">
           <div className="flex gap-5">
