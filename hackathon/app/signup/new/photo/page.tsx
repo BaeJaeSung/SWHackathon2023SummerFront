@@ -178,7 +178,7 @@ export default function SignUpPhotoPage() {
     >
       <div className="grid grid-cols-2 grid-rows-2 gap-4 rounded-lg px-10">
         <div
-          className="flex h-56 cursor-pointer items-center justify-center rounded-lg border-2 border-dotted border-gray-500"
+          className="flex h-56 cursor-pointer items-center justify-center rounded-lg border-2 border-dotted border-black bg-white"
           onClick={onClickPhoto1}
         >
           {photo1 ? (
@@ -193,7 +193,7 @@ export default function SignUpPhotoPage() {
               height={48}
               src={Icon}
               alt={'add'}
-              className="pointer-events-none opacity-50"
+              className="pointer-events-none opacity-80"
             />
           )}
         </div>
@@ -205,7 +205,7 @@ export default function SignUpPhotoPage() {
           ref={photo1Input}
         />
         <div
-          className="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dotted border-gray-500 text-center"
+          className="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dotted border-black bg-white text-center"
           onClick={onClickPhoto2}
         >
           {photo2 ? (
@@ -220,7 +220,7 @@ export default function SignUpPhotoPage() {
               height={48}
               src={Icon}
               alt={'add'}
-              className="pointer-events-none opacity-50"
+              className="pointer-events-none opacity-80"
             />
           )}
         </div>
@@ -232,7 +232,7 @@ export default function SignUpPhotoPage() {
           ref={photo2Input}
         />
         <div
-          className="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dotted border-gray-500 text-center"
+          className="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dotted border-black bg-white text-center"
           onClick={onClickPhoto3}
         >
           {photo3 ? (
@@ -247,7 +247,7 @@ export default function SignUpPhotoPage() {
               height={48}
               src={Icon}
               alt={'add'}
-              className="pointer-events-none opacity-50"
+              className="pointer-events-none opacity-80"
             />
           )}
         </div>
@@ -259,7 +259,7 @@ export default function SignUpPhotoPage() {
           ref={photo3Input}
         />
         <div
-          className="flex cursor-pointer items-center  justify-center rounded-lg border-2 border-dotted border-gray-500 text-center"
+          className="flex cursor-pointer items-center  justify-center rounded-lg border-2 border-dotted border-black bg-white text-center"
           onClick={onClickPhoto4}
         >
           {photo4 ? (
@@ -274,7 +274,7 @@ export default function SignUpPhotoPage() {
               height={48}
               src={Icon}
               alt={'add'}
-              className="pointer-events-none opacity-50"
+              className="pointer-events-none opacity-80"
             />
           )}
         </div>
