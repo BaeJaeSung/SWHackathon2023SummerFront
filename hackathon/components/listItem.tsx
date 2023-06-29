@@ -25,9 +25,9 @@ export default function ListItem({
         className="w-full"
       ></Image>
       <div className="absolute bottom-0 left-0 right-0 top-0 bg-gradient-to-b from-transparent to-black" />
-      <div className="absolute bottom-3 left-3">
+      <div className="absolute bottom-3 left-3 w-full pr-5">
         <p className="text-lg font-bold text-white">{top}</p>
-        <p className="text-[#83FFA6]">{bottom}</p>
+        <p className="w-full truncate text-[#83FFA6]">{bottom}</p>
       </div>
     </div>
   )

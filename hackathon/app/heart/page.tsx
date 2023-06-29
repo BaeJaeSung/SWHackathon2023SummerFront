@@ -1,14 +1,17 @@
 'use client'
 import ListItem from '@/components/listItem'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Hunt from '@/public/hunt.png'
 import Conf from '@/public/conf.png'
 import Conv from '@/public/conv.png'
 import Leaf from '@/public/leaf.png'
 import Chain from '@/public/chain.png'
+import { matchMyApply, matchReceived } from '@/lib/api'
 
 export default function HeartPage() {
   const [my, setMy] = useState(true)
+  const [receiveList, setReceiveList] = useState([])
+  const [applyList, setApplyList] = useState([])
   const onClickMy = () => {
     setMy(true)
   }
@@ -16,6 +19,12 @@ export default function HeartPage() {
   const onClickLike = () => {
     setMy(false)
   }
+  useEffect(() => {
+    const id = localStorage.getItem('id')
+    const type = parseInt(localStorage.getItem('type') as string)
+    matchReceived(id, type).then((res) => setReceiveList([...res]))
+    matchMyApply(id, type).then((res) => setApplyList([...res]))
+  }, [])
 
   return (
     <>
@@ -37,8 +46,15 @@ export default function HeartPage() {
           내가 받은 Like
         </div>
       </div>
-      <div className="relative mt-5 grid h-full w-full grid-cols-2 gap-5">
-        {localStorage.getItem('type') == '0' ? (
+      <div className="relative mt-5 grid w-full grid-cols-2 gap-5">
+        {my
+          ? applyList.map((item: any) => (
+              <ListItem top={item.name} bottom={item.intro} date={item.type} />
+            ))
+          : receiveList.map((item: any) => (
+              <ListItem top={item.name} bottom={item.intro} date={item.type} />
+            ))}
+        {/* {localStorage.getItem('type') == '0' ? (
           my ? (
             <>
               <ListItem
@@ -95,7 +111,7 @@ export default function HeartPage() {
               관심 있는 아르바이트에 Like를 눌러보세요
             </p>
           </div>
-        )}
+        )} */}
       </div>
     </>
   )
