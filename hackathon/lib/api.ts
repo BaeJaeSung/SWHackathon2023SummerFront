@@ -111,9 +111,15 @@ export const chatList = async (id: string, type: number) => {
     id: id,
     type: type,
   };
-  fetchData('chat/chat_list', postData)
+  return fetchData('chat/chat_list', postData)
     .then(data => {
-      console.log('API 데이터:', data);
+      if (type == 0) {
+
+        return data.map(item => { return { sender: item.ceo_name, recent: item.recent_msg, id: item.chat_id } })
+      } else {
+        return data.map(item => { return { sender: item.hiki_name, recent: item.recent_msg, id: item.chat_id } })
+
+      }
       // 데이터를 활용하여 추가적인 작업 수행
     })
     .catch(error => {
@@ -126,10 +132,10 @@ export const chatContents = async (chat_id: number) => {
   const postData = {
     chat_id: chat_id,
   };
-  fetchData('chat/contents', postData)
+  return fetchData('chat/contents', postData)
     .then(data => {
       console.log('API 데이터:', data);
-      // 데이터를 활용하여 추가적인 작업 수행
+      return data
     })
     .catch(error => {
       console.error('API 호출 에러:', error);
