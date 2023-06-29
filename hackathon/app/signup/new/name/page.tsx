@@ -14,7 +14,7 @@ export default function SignUpPage() {
   const [age, setAge] = useState('')
   return (
     <SignUpLayout
-      textTop="OO님의"
+      textTop={localStorage.getItem('id')+"님"}
       textBottom="이름과 나이를 입력해주세요"
       btnText="다음"
       btnEvent={onClick}
