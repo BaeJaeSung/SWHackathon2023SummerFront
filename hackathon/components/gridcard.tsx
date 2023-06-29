@@ -15,6 +15,7 @@ interface GridCardProps {
     period: number
     experience: string
   }
+  id:string
 }
 
 export default function GridCard({
@@ -24,6 +25,7 @@ export default function GridCard({
   info,
   studycareer,
   careers,
+  id
 }: GridCardProps) {
 
   const onClickDown = () => {
@@ -118,9 +120,7 @@ export default function GridCard({
           <div className="flex gap-5">
             <div className=" h-[180px] w-[150px] flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white">
               <Image
-                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${localStorage.getItem(
-                  'id',
-                )}_1.jpg`}
+                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${id}_1.jpg`}
                 alt="ex"
                 width={150}
                 height={180}
@@ -129,9 +129,7 @@ export default function GridCard({
             </div>
             <div className="flex h-[180px]  w-[150px] flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white">
               <Image
-                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${localStorage.getItem(
-                  'id',
-                )}_2.jpg`}
+                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${id}_2.jpg`}
                 alt="ex"
                 width={150}
                 height={180}
@@ -140,9 +138,7 @@ export default function GridCard({
             </div>
             <div className="flex h-[180px] w-[150px] flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white">
               <Image
-                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${localStorage.getItem(
-                  'id',
-                )}_3.jpg`}
+                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${id}_3.jpg`}
                 alt="ex"
                 width={150}
                 className="h-full w-full object-cover"
@@ -151,9 +147,7 @@ export default function GridCard({
             </div>
             <div className="flex h-[180px]  w-[150px] flex-shrink-0 items-center justify-center  overflow-hidden rounded-lg bg-white">
               <Image
-                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${localStorage.getItem(
-                  'id',
-                )}_4.jpg`}
+                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${id}_4.jpg`}
                 alt="ex"
                 className="h-full w-full object-cover"
                 width={150}

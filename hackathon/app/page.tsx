@@ -2,10 +2,14 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import MainCard from '@/components/maincard'
+import { matchLoadCandidateHiki } from '@/lib/api'
 
 export default function MainPage() {
-  const [items, setItems] = useState([
-    {
+  const [items, setItems] = useState([])
+  /*  {
+      age:0,
+      id: "",
+      uid:0,
       nickname: '히키',
       info: '하하',
       studycareer: '제주여자고등학교',
@@ -15,7 +19,7 @@ export default function MainPage() {
         experience: '홀',
       },
     },
-  ])
+  ])*/
   const [showFull, setShowFull] = useState(false)
   /*
   const [nickname, setNickname] = useState('히키')
@@ -28,8 +32,8 @@ export default function MainPage() {
     period: 2,
     experience: "홀",
   })*/
-  localStorage.setItem('type', '0')
-  useEffect(() => {
+  //localStorage.setItem('type', '0')
+  /*useEffect(() => {
     axios
       .post('http://3.39.72.59:3000/match/load_candidate_hiki', {
         id: localStorage.getItem('id'),
@@ -56,23 +60,40 @@ export default function MainPage() {
         //}
       })
       .catch((err) => console.log(err))
-  }, [])
+  }, [])*/
 
   useEffect(() => {
-    console.log(items)
-  }, [items])
+    const id = localStorage.getItem("id")
+    matchLoadCandidateHiki(id).then((res) =>
+      setItems([...res])
+   )
+  }, [])
+
+  useEffect(()=>{
+    const id = localStorage.getItem('id')
+
+    if(items.length===0){
+      matchLoadCandidateHiki(id).then((res)=>
+      setItems([...res]))
+    }
+  },[items])
+
 
   return (
     <div className="flex h-full w-full gap-10 overflow-hidden">
       {items &&
-        items.map((item) => (
+        items.map((item : any, index) => (
           <MainCard
             showFull={showFull}
             setShowFull={setShowFull}
             nickname={item.nickname}
             info={item.info}
-            studycareer={item.studycareer}
+            studycareer={item.study_career}
             careers={item.careers}
+            id={item.id}
+            setItems={setItems}
+            items={items}
+            key={index}
           />
         ))}
     </div>

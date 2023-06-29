@@ -6,6 +6,17 @@ import GridCard from "./gridcard"
 import CANCEL from '@/public/cancel.svg'
 import LIKE from '@/public/like.svg'
 
+interface item{
+  nickname: string
+  info:string
+  studycareer: string
+  careers:{
+    company_name:string
+    period:string
+    experience:string
+  }
+}
+
 interface MainCardProps {
   showFull: boolean
   setShowFull: Dispatch<SetStateAction<boolean>>
@@ -17,11 +28,14 @@ interface MainCardProps {
     period: number
     experience: string
   }
+  items: item[]
+  id: string
+  setItems: Dispatch<SetStateAction<item[]>>
 }
 
-export default function MainCard({ showFull , setShowFull,nickname, info, studycareer, careers }:MainCardProps) {
+export default function MainCard({ showFull , setShowFull,nickname, info, studycareer, careers, items, setItems, id }:MainCardProps) {
   const onClickCancel = () => {
-    
+    setItems(items.filter(item=>item.nickname!==nickname))
   }
   
   return (
@@ -33,9 +47,7 @@ export default function MainCard({ showFull , setShowFull,nickname, info, studyc
       >
         <div className="flex items-center justify-center rounded-lg p-0">
           <Image
-            src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${localStorage.getItem(
-              'id',
-            )}_1.jpg`}
+            src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${id}_1.jpg`}
             width={100}
             height={100}
             alt="hiki"
@@ -60,6 +72,7 @@ export default function MainCard({ showFull , setShowFull,nickname, info, studyc
             info={info}
             studycareer={studycareer}
             careers={careers}
+            id={id}
           />
         </div>
       </div>

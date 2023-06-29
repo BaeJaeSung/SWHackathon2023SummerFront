@@ -62,10 +62,13 @@ export const matchLoadCandidateHiki = async (id: string) => {
   const postData = {
     id: id,
   };
-  fetchData('match/load_candidate_hiki', postData)
+  return fetchData('match/load_candidate_hiki', postData)
     .then(data => {
       console.log('API 데이터:', data);
       // 데이터를 활용하여 추가적인 작업 수행
+      return data.map(({ age, career, id, info, nickname, study_career, uid }: any) => {
+        return { age, career, id, info, nickname, study_career, uid }
+      })
     })
     .catch(error => {
       console.error('API 호출 에러:', error);
