@@ -20,10 +20,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={noto.className}>
-        <div className="flex max-h-screen w-full flex-wrap items-center justify-center">
-          <div className="bg-gray-10 flex h-screen w-full max-w-lg flex-col justify-between bg-[#EFEFED]">
+        <div className="flex max-h-screen w-full flex-wrap justify-center">
+          <div className="flex h-screen w-full max-w-lg flex-col justify-between bg-[#ECEFF4]">
             {session && <Header />}
-            <main className="h-full w-full">{children}</main>
+            <main className="min-h-screen w-full overflow-y-auto p-10">
+              {children}
+            </main>
             {/* <Footer /> */}
           </div>
         </div>

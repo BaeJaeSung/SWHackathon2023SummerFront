@@ -18,13 +18,13 @@ export default function SignUpLayout({
   btnEvent,
 }: SignupLayoutProps) {
   return (
-    <div className="flex h-full flex-col justify-around gap-10 px-10 py-10">
+    <div className="flex h-full flex-col justify-around gap-10">
       <h2 className="text-3xl font-bold leading-relaxed">
         {textTop}
         <br />
         {textBottom}
       </h2>
-      <div className="h-full">{children}</div>
+      {children}
       {btnText !== '로그인' && (
         <button
           className="btn w-full border-none bg-[#292929] text-lg text-[#35FF6E] hover:bg-[#292929]"

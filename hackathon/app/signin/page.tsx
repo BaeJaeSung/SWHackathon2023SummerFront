@@ -51,7 +51,7 @@ export default function SigninPage() {
         />
       </div>
       <button
-        className="btn mt-4 w-full border-none bg-[#292929] text-[#35FF6E] hover:bg-[#292929]"
+        className="btn mt-4 w-full border-none bg-[#292929] text-lg text-[#35FF6E] hover:bg-[#292929]"
         onClick={onClickSignIn}
       >
         로그인
