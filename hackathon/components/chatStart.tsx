@@ -15,7 +15,7 @@ export default function ChatStart({
     <div className="chat chat-start mt-5">
       <div className="chat-bubble relative bg-white p-4 text-black">
         <Image
-          src={type == '0' ? Green : Purple}
+          src={type == '0' ? Purple : Green}
           width={35}
           height={35}
           alt="green"

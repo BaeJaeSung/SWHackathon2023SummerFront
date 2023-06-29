@@ -87,7 +87,7 @@ export default function ChatPage() {
           }}
         >
           <div className="rounded-full  pr-1  text-white">
-            <Image src={Purple} alt="profile" width={50} height={50} />
+            <Image src={Green} alt="profile" width={50} height={50} />
           </div>
           <div>
             <p className="text-xl font-bold">야간 편의점</p>
@@ -104,7 +104,7 @@ export default function ChatPage() {
           }}
         >
           <div className="rounded-full  pr-1  text-white">
-            <Image src={Purple} alt="profile" width={50} height={50} />
+            <Image src={Green} alt="profile" width={50} height={50} />
           </div>
           <div>
             <p className="text-xl font-bold">행사 매니저</p>
