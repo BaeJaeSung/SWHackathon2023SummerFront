@@ -23,7 +23,7 @@ export default async function RootLayout({
         <div className="flex max-h-screen w-full flex-wrap justify-center">
           <div className="flex h-screen w-full max-w-lg flex-col justify-between bg-[#ECEFF4]">
             {session && <Header />}
-            <main className="min-h-screen w-full overflow-y-auto p-10">
+            <main className="h-full w-full overflow-y-auto p-10">
               {children}
             </main>
             {session && <Footer />}

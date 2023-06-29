@@ -10,7 +10,7 @@ export default function GridCard() {
           </span>
         </div>
         <div>
-          <button className="rounded-full bg-white px-3 py-2 font-semibold text-[#292929] ">
+          <button className="rounded-full bg-white px-4 py-1 text-xs font-semibold text-[#292929]">
             축소하기
           </button>
         </div>
@@ -30,16 +30,12 @@ export default function GridCard() {
         <span className="font-normal text-white">&nbsp;있음</span>
       </div>
 
-      <div className="grid items-center justify-between mb-3">
+      <div className="mb-3 grid items-center justify-between">
         <div className="flex">
-          <div
-            className="bg-gray mr-4 w-1 rounded-sm h-48 bg-[#35FF6E]"
-          >
+          <div className="bg-gray mr-4 h-48 w-1 rounded-sm bg-[#35FF6E]">
             &nbsp;
           </div>
-          <div
-            className="w-full  rounded-lg bg-white p-5"
-          >
+          <div className="w-full  rounded-lg bg-white p-5">
             <div className="mb-3 font-semibold text-[#292929]">
               회사명
               <span className="font-normal text-[#292929]">&nbsp;우리카페</span>
@@ -61,17 +57,45 @@ export default function GridCard() {
 
       <div className="mb-3 font-semibold text-white">
         사진
-        <div className="rounded-lg" >
-          <Image src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/name_1.jpg`} alt="ex" width={120} height={150}/>
-        </div>
-        <div className="rounded-lg">
-          <Image src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/name_2.jpg`} alt="ex" width={120} height={150}/>
-        </div>
-        <div className="rounded-lg">
-          <Image src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/name_3.jpg`} alt="ex" width={120} height={150}/>
-        </div>
-        <div className="rounded-lg">
-          <Image src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/name_4.jpg`} alt="ex" width={120} height={150}/>
+        <div className="my-3 w-full overflow-x-auto whitespace-nowrap">
+          <div className="flex gap-5">
+            <div className=" h-[180px] w-[150px] flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white">
+              <Image
+                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/name_1.jpg`}
+                alt="ex"
+                width={150}
+                height={180}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="flex h-[180px]  w-[150px] flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white">
+              <Image
+                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/name_2.jpg`}
+                alt="ex"
+                width={150}
+                height={180}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="flex h-[180px] w-[150px] flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white">
+              <Image
+                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/name_3.jpg`}
+                alt="ex"
+                width={150}
+                className="h-full w-full object-cover"
+                height={180}
+              />
+            </div>
+            <div className="flex h-[180px]  w-[150px] flex-shrink-0 items-center justify-center  overflow-hidden rounded-lg bg-white">
+              <Image
+                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/name_4.jpg`}
+                alt="ex"
+                className="h-full w-full object-cover"
+                width={150}
+                height={180}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
