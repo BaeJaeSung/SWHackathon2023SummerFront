@@ -1,8 +1,8 @@
-"use client"
-import SignUpLayout from "@/components/signUpLayout"
-import { useRouter } from "next/navigation"
+'use client'
+import SignUpLayout from '@/components/signUpLayout'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import LOGO from "@/public/logo.png"
+import LOGO from '@/public/logo.png'
 
 export default function SigninPage() {
   const router = useRouter()
@@ -28,20 +28,22 @@ export default function SigninPage() {
           id="id"
           type="text"
           placeholder="아이디 입력"
-          className="bg-white-200 input my-1 w-full "
+          className="input my-1 w-full bg-white "
         />
         <input
           id="pw"
           type="password"
           placeholder="비밀번호 입력"
-          className="bg-white-200 input my-1 w-full "
+          className="input my-1 w-full bg-white "
         />
       </div>
       <button className="btn mt-4 w-full border-none bg-[#292929] text-[#35FF6E] hover:bg-[#292929]">
         로그인
       </button>
-      <div className="text-right mt-2">
-        <span className="text-[#9B9B9B] cursor-pointer" onClick={onClickSingUp}>회원가입</span>
+      <div className="mt-2 text-right">
+        <span className="cursor-pointer text-[#9B9B9B]" onClick={onClickSingUp}>
+          회원가입
+        </span>
       </div>
     </SignUpLayout>
   )

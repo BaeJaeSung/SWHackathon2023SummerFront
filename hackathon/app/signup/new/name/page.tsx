@@ -19,21 +19,13 @@ export default function SignUpPage() {
           <label htmlFor="name" className="cursor-pointer">
             이름
           </label>
-          <input
-            id="name"
-            type="text"
-            className="input my-3 w-full bg-white"
-          />
+          <input id="name" type="text" className="input my-3 w-full bg-white" />
         </div>
         <div>
           <label htmlFor="age" className="cursor-pointer">
             나이
           </label>
-          <input
-            id="age"
-            type="text"
-            className="input my-3 w-full bg-white"
-          />
+          <input id="age" type="text" className="input my-3 w-full bg-white" />
         </div>
       </div>
     </SignUpLayout>
