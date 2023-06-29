@@ -6,7 +6,6 @@ export const getSession = async () => {
   return await getServerSession(authOption)
 }
 
-
 const api_end_point = 'http://3.39.72.59:3000/'
 
 // API 호출을 위한 함수
@@ -22,6 +21,29 @@ function fetchData(url: string, data: any): Promise<any> {
   });
 }
 
+// API 호출을 위한 함수
+function fetchGetDataExist(url:string) {
+  const apiUrl = url;
+  return new Promise((resolve, reject) => {
+    axios.get(apiUrl)
+      .then(response => {
+        resolve(response.data); // 성공적으로 데이터를 받아온 경우 resolve 호출
+      })
+      .catch(error => {
+        reject(error); // API 호출 중 에러가 발생한 경우 reject 호출
+      });
+  });
+}
+export const getData = async (url:string) => {
+  return fetchGetDataExist(url)
+    .then(data => {
+      return true;
+    })
+    .catch(error => {
+      return false;
+    });
+}
+
 
 export const userJoin = async (id: string, pw: string, nickname: string, type: number, age: number) => {
   const postData = {
@@ -31,14 +53,12 @@ export const userJoin = async (id: string, pw: string, nickname: string, type: n
     type: type,
     age: age
   };
-  fetchData('user/join', postData)
+  return fetchData('user/join', postData)
     .then(data => {
-      console.log('API 데이터:', data);
-      // 데이터를 활용하여 추가적인 작업 수행
+      return data;
     })
     .catch(error => {
-      console.error('API 호출 에러:', error);
-      // 에러 처리
+      return false;
     });
 }
 
@@ -47,13 +67,15 @@ export const userLogin = async (id: string, pw: string) => {
     id: id,
     pw: pw,
   };
-  fetchData('user/login', postData)
+  return fetchData('user/login', postData)
     .then(data => {
-      console.log('API 데이터:', data);
+      return data;
+      //console.log('API 데이터:', data);
       // 데이터를 활용하여 추가적인 작업 수행
     })
     .catch(error => {
-      console.error('API 호출 에러:', error);
+      return false;
+      //console.error('API 호출 에러:', error);
       // 에러 처리
     });
 }
@@ -80,9 +102,9 @@ export const matchLoadCandidateCeo = async (id: string) => {
   const postData = {
     id: id,
   };
-  fetchData('match/load_candidate_ceo', postData)
+  return fetchData('match/load_candidate_ceo', postData)
     .then(data => {
-      console.log('API 데이터:', data);
+      return data;
       // 데이터를 활용하여 추가적인 작업 수행
     })
     .catch(error => {
@@ -98,9 +120,9 @@ export const chatSend = async (chat_id: number, id: string, msg: string, type: n
     msg: msg,
     type: type
   };
-  fetchData('chat/send', postData)
+  return fetchData('chat/send', postData)
     .then(data => {
-      console.log('API 데이터:', data);
+      return data;
       // 데이터를 활용하여 추가적인 작업 수행
     })
     .catch(error => {
@@ -137,8 +159,7 @@ export const chatContents = async (chat_id: number) => {
   };
   return fetchData('chat/contents', postData)
     .then(data => {
-      console.log('API 데이터:', data);
-      return data
+      return data;
     })
     .catch(error => {
       console.error('API 호출 에러:', error);
@@ -153,9 +174,9 @@ export const matchChoice = async (id: string, type: number, receiver_id: string,
     receiver_id: receiver_id,
     choice: choice
   };
-  fetchData('match/choice', postData)
+  return fetchData('match/choice', postData)
     .then(data => {
-      console.log('API 데이터:', data);
+      return data;
       // 데이터를 활용하여 추가적인 작업 수행
     })
     .catch(error => {
@@ -199,9 +220,9 @@ export const userRegisterProfileText = async (id: string, info: string) => {
     id: id,
     info: info
   };
-  fetchData('user/register_profile_text', postData)
+  return fetchData('user/register_profile_text', postData)
     .then(data => {
-      console.log('API 데이터:', data);
+      return data;
       // 데이터를 활용하여 추가적인 작업 수행
     })
     .catch(error => {
@@ -215,9 +236,9 @@ export const userRegisterProfileStudyCareer = async (id: string, study_career: s
     id: id,
     study_career: study_career
   };
-  fetchData('user/register_profile_study_career', postData)
+  return fetchData('user/register_profile_study_career', postData)
     .then(data => {
-      console.log('API 데이터:', data);
+      return data;
       // 데이터를 활용하여 추가적인 작업 수행
     })
     .catch(error => {
@@ -233,9 +254,9 @@ export const userRegisterCareer = async (id: string, company_name: string, perio
     period: period,
     experience: experience
   };
-  fetchData('user/register_career', postData)
+  return fetchData('user/register_career', postData)
     .then(data => {
-      console.log('API 데이터:', data);
+      return data;
       // 데이터를 활용하여 추가적인 작업 수행
     })
     .catch(error => {
@@ -248,9 +269,9 @@ export const userMyInfo = async (id: string) => {
   const postData = {
     id: id
   };
-  fetchData('user/my_info', postData)
+  return fetchData('user/my_info', postData)
     .then(data => {
-      console.log('API 데이터:', data);
+      return data;
       // 데이터를 활용하여 추가적인 작업 수행
     })
     .catch(error => {
@@ -269,9 +290,9 @@ export const chatgptCreate = async (id: string, nickname: string, age: number, c
     experience: experience,
     study_career: study_career
   };
-  fetchData('chatgpt/create', postData)
+  return fetchData('chatgpt/create', postData)
     .then(data => {
-      console.log('API 데이터:', data);
+      return data;
       // 데이터를 활용하여 추가적인 작업 수행
     })
     .catch(error => {
