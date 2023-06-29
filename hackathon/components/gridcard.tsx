@@ -1,21 +1,54 @@
+"use client"
 import Image from 'next/image'
+import UP from "@/public/up.png"
+import DOWN from "@/public/down.png"
+import { Dispatch, SetStateAction } from 'react'
 
-export default function GridCard() {
+interface GridCardProps{
+  showFull: boolean
+  setShowFull:Dispatch<SetStateAction<boolean>>
+}
+
+export default function GridCard({ showFull, setShowFull }: GridCardProps) {
+  const onClickDown = () => {
+    setShowFull(!showFull)
+  }
+
+  const onClickUp = () => {
+    setShowFull(!showFull)
+  }
+
   return (
-    <div className="rounded-lg bg-white p-8 text-[#292929]">
+    <div className="rounded-lg bg-white pb-8 pl-8 pr-8 text-[#292929]">
+      <div className="items-cent}er mb-3 flex justify-center pt-5">
+        {showFull === true ? (
+          <Image
+            src={DOWN}
+            width={15}
+            height={25}
+            alt="화살표"
+            onClick={onClickDown}
+            className="cursor-pointer "
+          />
+        ) : (
+          <Image
+            src={UP}
+            width={15}
+            height={25}
+            alt="화살표"
+            onClick={onClickUp}
+            className="cursor-pointer "
+          />
+        )}
+      </div>
       <div className="mb-5 flex items-center justify-between">
         <div>
           <span className="text-2xl font-semibold text-[#292929]">
             이래영 <span className="text-base text-[#8F00FF]">26</span>
           </span>
         </div>
-        {/*<div>
-          <button className="rounded-full bg-white px-4 py-1 text-xs font-semibold text-[#292929]">
-            축소하기
-          </button>
-  </div>*/}
       </div>
-      <div className="mb-5 text-[#292929]">
+      <div className={`mb-5 text-[#292929] ${showFull ? '' : 'truncate	'}`}>
         안녕하세요, 카페 아르바이트를 구하고 있는 22살 이래영입니다. 저는
         바리스타 자격증 1급이 있으며, 책임감이 강합니다. 최근 1년간 집에서
         무기력하게 지내다 빛나는 연결을 접한 후 다시 바리스타의 꿈을 꾸기
