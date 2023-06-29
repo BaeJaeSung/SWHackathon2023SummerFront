@@ -6,10 +6,8 @@ import Conv from '@/public/conv.png'
 import LeftIcon from '@/public/chevron_left_FILL0_wght400_GRAD0_opsz48.svg'
 import { useEffect, useState } from 'react'
 import ChatStart from '@/components/chatStart'
-import Green from '@/public/green.svg'
-import Purple from '@/public/purple.svg'
 import ChatEnd from '@/components/chatEnd'
-import { chatList as getChatList, chatContents } from '@/lib/api'
+import { chatList as getChatList, chatContents, chatSend } from '@/lib/api'
 import ChatList from '@/components/chatList'
 
 export default function ChatPage() {
@@ -26,22 +24,20 @@ export default function ChatPage() {
   }, [])
   const chat = (e) => {
     e.preventDefault()
-    setChatList({
-      ...chatList,
-      [title]: [
-        ...chatList[title],
-        {
-          text: text,
-          type: localStorage.getItem('type'),
-          date: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        },
-      ],
+    chatSend(
+      cId,
+      localStorage.getItem('id'),
+      text,
+      parseInt(localStorage.getItem('type')),
+    ).then(() => {
+      chatContents(cId).then((res) => {
+        setChatList(res.contents)
+      })
     })
     setText('')
   }
   useEffect(() => {
     chatContents(cId).then((res) => {
-      console.log(res.contents)
       setChatList(res.contents)
     })
   }, [cId])
