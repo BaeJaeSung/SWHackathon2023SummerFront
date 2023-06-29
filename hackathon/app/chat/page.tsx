@@ -43,7 +43,9 @@ export default function ChatPage() {
   }, [cId])
   return (
     <>
-      <h2 className="text-2xl font-bold">나와 매칭된 사장님</h2>
+      <h2 className="text-2xl font-bold">{`나와 매칭된 ${
+        localStorage.getItem('type') == 0 ? '사장님' : '청년님'
+      }`}</h2>
       <div className="mt-5 overflow-x-auto">
         <div className="flex w-full flex-nowrap gap-3">
           <div className="relative shrink-0 cursor-pointer overflow-hidden  rounded-lg">
