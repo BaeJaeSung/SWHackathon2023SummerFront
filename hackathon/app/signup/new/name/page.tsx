@@ -22,7 +22,7 @@ export default function SignUpPage() {
           <input
             id="name"
             type="text"
-            className="input my-3 w-full bg-white-200 "
+            className="input my-3 w-full bg-white"
           />
         </div>
         <div>
@@ -32,7 +32,7 @@ export default function SignUpPage() {
           <input
             id="age"
             type="text"
-            className="input my-3 w-full bg-white-200 "
+            className="input my-3 w-full bg-white"
           />
         </div>
       </div>
