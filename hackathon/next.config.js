@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
 
-module.exports = nextConfig
+module.exports = {
+  images: {
+    domains: ['swhackathon.s3.ap-northeast-2.amazonaws.com'],
+  },
+} 

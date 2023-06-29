@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation'
 const REGION = process.env.NEXT_PUBLIC_AWS_REGION
 const ACCESS_KEY_ID = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY
 const SECRET_KEY_ID = process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY
-const BUCKET = process.env.NEXT_PUBLIC_REACT_APP_AWS_BUCKET
+const BUCKET = process.env.NEXT_PUBLIC_AWS_BUCKET
 
 AWS.config.update({
   region: REGION,
