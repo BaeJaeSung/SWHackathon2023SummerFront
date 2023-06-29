@@ -48,11 +48,21 @@ export default function HeartPage() {
       </div>
       <div className="relative mt-5 grid w-full grid-cols-2 gap-5">
         {my
-          ? applyList.map((item: any) => (
-              <ListItem top={item.name} bottom={item.intro} date={item.type} />
+          ? applyList.map((item: any, index) => (
+              <ListItem
+                top={item.name}
+                bottom={item.intro}
+                date={item.type}
+                key={index}
+              />
             ))
-          : receiveList.map((item: any) => (
-              <ListItem top={item.name} bottom={item.intro} date={item.type} />
+          : receiveList.map((item: any, index) => (
+              <ListItem
+                top={item.name}
+                bottom={item.intro}
+                date={item.type}
+                key={index}
+              />
             ))}
         {/* {localStorage.getItem('type') == '0' ? (
           my ? (
