@@ -26,7 +26,7 @@ export default function SignUpLayout({
       </h2>
       <div className="mt-12 h-full">{children}</div>
       <button
-        className="btn w-full border-none bg-gray-500 text-white"
+        className="hover:bg-[#292929] btn w-full border-none bg-[#292929] text-[#35FF6E]"
         onClick={btnEvent}
       >
         {btnText}
