@@ -25,6 +25,14 @@ export default function SignUpDetailPage() {
         period: localStorage.getItem('period'),
         experience: localStorage.getItem('exp'),
       }),
+      axios.post('http://3.39.72.59:3000/user/register_profile_study_career', {
+        id: localStorage.getItem('id'),
+        study_career: edu,
+      }),
+      axios.post('http://3.39.72.59:3000/user/register_profile_text', {
+        id: localStorage.getItem('id'),
+        info: localStorage.getItem('detail'),
+      }),
     ]).then(() => {
       signIn('custom', {
         id: localStorage.getItem('id'),
