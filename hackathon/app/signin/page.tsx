@@ -2,9 +2,10 @@
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import LOGO from '@/public/logo.png'
-import { signIn } from 'next-auth/react'
+import { getSession, signIn } from 'next-auth/react'
 import { useState } from 'react'
 import SignInLayout from '@/components/signInLayout'
+import axios from 'axios'
 
 export default function SigninPage() {
   const router = useRouter()
@@ -17,6 +18,7 @@ export default function SigninPage() {
   }
   function onClickSignIn() {
     signIn('custom', { id, password: pw, callbackUrl: '/' })
+    localStorage.getItem(id)
   }
 
   return (
