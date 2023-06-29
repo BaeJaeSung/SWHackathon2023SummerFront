@@ -8,14 +8,18 @@ interface SignupLayoutProps {
   textBottom: string
   btnText: string
   btnEvent: MouseEventHandler
+  subText: string
+  subEvent: MouseEventHandler
 }
 
-export default function SignUpLayout({
+export default function SignInLayout({
   children,
   textTop,
   textBottom,
   btnText,
   btnEvent,
+  subText,
+  subEvent,
 }: SignupLayoutProps) {
   return (
     <div className="flex h-full flex-col justify-around gap-10">
@@ -31,6 +35,11 @@ export default function SignUpLayout({
       >
         {btnText}
       </button>
+      <div className="mt-2 text-right">
+        <span className="cursor-pointer text-[#9B9B9B]" onClick={subEvent}>
+          {subText}
+        </span>
+      </div>
     </div>
   )
 }

@@ -1,16 +1,13 @@
 'use client'
-import SignUpLayout from '@/components/signUpLayout'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import LOGO from '@/public/logo.png'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
+import SignInLayout from '@/components/signInLayout'
 
 export default function SigninPage() {
   const router = useRouter()
-  const onClick = () => {
-    //router.push('/')
-  }
 
   const [id, setId] = useState('')
   const [pw, setPw] = useState('')
@@ -23,11 +20,13 @@ export default function SigninPage() {
   }
 
   return (
-    <SignUpLayout
+    <SignInLayout
       textTop="환영합니다:)"
       textBottom="빛나는 연결입니다."
       btnText="로그인"
-      btnEvent={onClick}
+      btnEvent={onClickSignIn}
+      subEvent={onClickSingUp}
+      subText="회원가입"
     >
       <div className="mb-10 flex items-center justify-center">
         <Image src={LOGO} width={150} height={150} alt="로고" />
@@ -50,17 +49,6 @@ export default function SigninPage() {
           onChange={(e) => setPw(e.target.value)}
         />
       </div>
-      <button
-        className="btn mt-4 w-full border-none bg-[#292929] text-lg text-[#35FF6E] hover:bg-[#292929]"
-        onClick={onClickSignIn}
-      >
-        로그인
-      </button>
-      <div className="mt-2 text-right">
-        <span className="cursor-pointer text-[#9B9B9B]" onClick={onClickSingUp}>
-          회원가입
-        </span>
-      </div>
-    </SignUpLayout>
+    </SignInLayout>
   )
 }

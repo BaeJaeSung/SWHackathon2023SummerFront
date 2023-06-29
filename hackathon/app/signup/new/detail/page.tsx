@@ -1,17 +1,37 @@
 'use client'
 import SignUpLayout from '@/components/signUpLayout'
-import { useRouter } from 'next/navigation'
+import axios from 'axios'
+import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 
 export default function SignUpDetailPage() {
-  const router = useRouter()
   const onClick = () => {
     localStorage.setItem('detail', detail)
     localStorage.setItem('edu', edu)
     localStorage.setItem('company', company)
     localStorage.setItem('period', period)
     localStorage.setItem('exp', exp)
-    router.push('/')
+    Promise.all([
+      axios.post('http://3.39.72.59:3000/user/join', {
+        id: localStorage.getItem('id'),
+        pw: localStorage.getItem('pw'),
+        nickname: localStorage.getItem('name'),
+        type: localStorage.getItem('type'),
+        age: localStorage.getItem('age'),
+      }),
+      axios.post('http://3.39.72.59:3000/user/register_career', {
+        id: localStorage.getItem('id'),
+        company_name: localStorage.getItem('company'),
+        period: localStorage.getItem('period'),
+        experience: localStorage.getItem('exp'),
+      }),
+    ]).then(() => {
+      signIn('custom', {
+        id: localStorage.getItem('id'),
+        pw: localStorage.getItem('pw'),
+        callbackUrl: '/',
+      })
+    })
   }
 
   const [detail, setDetail] = useState('')
@@ -22,9 +42,9 @@ export default function SignUpDetailPage() {
 
   return (
     <SignUpLayout
-      textTop="00님의"
+      textTop={`${localStorage.getItem('name')}님의`}
       textBottom="자기소개가 궁금해요!"
-      btnText="다음"
+      btnText="가입 완료"
       btnEvent={onClick}
     >
       <div className="flex flex-col gap-5 overflow-y-auto">
