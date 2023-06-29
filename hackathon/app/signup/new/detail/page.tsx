@@ -1,15 +1,15 @@
-"use client"
-import SignUpLayout from "@/components/signUpLayout"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
+'use client'
+import SignUpLayout from '@/components/signUpLayout'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 export default function SignUpDetailPage() {
   const router = useRouter()
   const onClick = () => {
-    router.push('/');
+    router.push('/')
   }
 
-  const [detail, setDetail] = useState();
+  const [detail, setDetail] = useState()
   const [edu, setEdu] = useState('대졸')
   const [company, setCompany] = useState()
   const [period, setPeriod] = useState()
@@ -33,12 +33,12 @@ export default function SignUpDetailPage() {
           <textarea
             id="detail"
             className="textarea mb-3 w-full resize-none"
-          />
+          ></textarea>
           <div>
             <label htmlFor="edu" className="label font-semibold">
               학력
             </label>
-            <select id="edu" className="select mb-3  w-40">
+            <select id="edu" className="select mb-3  w-40 bg-white">
               <option value="대졸" defaultValue={edu}>
                 대졸
               </option>
@@ -52,13 +52,13 @@ export default function SignUpDetailPage() {
               아르바이트 근무 경험이 있다면?
             </div>
             <div>
-              <label htmlFor="company" className="font-semibold label">
+              <label htmlFor="company" className="cursor-pointer font-semibold label">
                 회사명
               </label>
               <input
                 id="company"
                 type="text"
-                className="bg-white-200 input mb-3 w-full"
+                className="input mb-3 w-full bg-white"
               />
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function SignUpDetailPage() {
             >
               근무 기간
             </label>
-            <select id="period" className="select mb-3 w-40">
+            <select id="period" className="select mb-3 w-40 bg-white">
               <option value="3일 이하" defaultValue={period}>
                 3일 이하
               </option>
@@ -92,7 +92,7 @@ export default function SignUpDetailPage() {
               <textarea
                 id="detail"
                 className="textarea w-full resize-none"
-              />
+              ></textarea>
             </div>
           </div>
         </div>

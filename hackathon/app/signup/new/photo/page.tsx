@@ -3,19 +3,19 @@ import { useState, useRef, useEffect, SetStateAction } from 'react'
 import Image from 'next/image'
 import Icon from '@/public/add_circle_black_24dp.svg'
 import SignUpLayout from '@/components/signUpLayout'
-import AWS from "aws-sdk"
+import AWS from 'aws-sdk'
 import { useRouter } from 'next/navigation'
 
-const REGION = process.env.NEXT_PUBLIC_AWS_REGION;
+const REGION = process.env.NEXT_PUBLIC_AWS_REGION
 const ACCESS_KEY_ID = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY
 const SECRET_KEY_ID = process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY
 const BUCKET = process.env.NEXT_PUBLIC_REACT_APP_AWS_BUCKET
-    
+
 AWS.config.update({
-  region:REGION,
-  accessKeyId:ACCESS_KEY_ID,
-  secretAccessKey:SECRET_KEY_ID,
-});
+  region: REGION,
+  accessKeyId: ACCESS_KEY_ID,
+  secretAccessKey: SECRET_KEY_ID,
+})
 
 export default function SignUpPhotoPage() {
   const [photo1, setPhoto1] = useState()
@@ -51,120 +51,120 @@ export default function SignUpPhotoPage() {
   }
 
   const handleFile1 = (e) => {
-    if(e.target.files.length !== 0){
-      encodeFileToBase64(e.target.files[0], 1);
-      setPhoto1File(e.target.files[0]);
+    if (e.target.files.length !== 0) {
+      encodeFileToBase64(e.target.files[0], 1)
+      setPhoto1File(e.target.files[0])
     }
   }
   const handleFile2 = (e) => {
-    if(e.target.files.length !== 0){
-      encodeFileToBase64(e.target.files[0], 2);
-      setPhoto2File(e.target.files[0]);
+    if (e.target.files.length !== 0) {
+      encodeFileToBase64(e.target.files[0], 2)
+      setPhoto2File(e.target.files[0])
     }
   }
   const handleFile3 = (e) => {
-    if(e.target.files.length !== 0){
-      encodeFileToBase64(e.target.files[0], 3);
-      setPhoto3File(e.target.files[0]);
+    if (e.target.files.length !== 0) {
+      encodeFileToBase64(e.target.files[0], 3)
+      setPhoto3File(e.target.files[0])
     }
   }
   const handleFile4 = (e) => {
-    if(e.target.files.length !== 0){
-      encodeFileToBase64(e.target.files[0], 4);
-      setPhoto4File(e.target.files[0]);
+    if (e.target.files.length !== 0) {
+      encodeFileToBase64(e.target.files[0], 4)
+      setPhoto4File(e.target.files[0])
     }
   }
 
   const checkFiles = () => {
-    if (photo1) return true;
-    return false;
+    if (photo1) return true
+    return false
   }
 
   const onClick = () => {
-    const s3 = new AWS.S3();
+    const s3 = new AWS.S3()
 
     if (photo1File) {
-      const params1={
-        Bucket: "swhackathon",
-        Key : "name"+"_1.jpg",
+      const params1 = {
+        Bucket: 'swhackathon',
+        Key: 'name' + '_1.jpg',
         Body: photo1File,
-      };
+      }
 
-      s3.upload(params1, function (err, data){
-        if(err) {
-          console.log("업로드 오류", err);
+      s3.upload(params1, function (err, data) {
+        if (err) {
+          console.log('업로드 오류', err)
         } else {
-          console.log("업로드 성공", data);
+          console.log('업로드 성공', data)
         }
-      });      
+      })
     }
 
     if (photo2File) {
-      const params2={
+      const params2 = {
         Bucket: BUCKET,
-        Key : "name"+"_2.jpg",
+        Key: 'name' + '_2.jpg',
         Body: photo2File,
-      };
+      }
 
-      s3.upload(params2, function (err, data){
-        if(err) {
-          console.log("업로드 오류", err);
+      s3.upload(params2, function (err, data) {
+        if (err) {
+          console.log('업로드 오류', err)
         } else {
-          console.log("업로드 성공", data);
+          console.log('업로드 성공', data)
         }
-      });      
+      })
     }
 
     if (photo3File) {
-      const params3={
+      const params3 = {
         Bucket: BUCKET,
-        Key : "name"+"_3.jpg",
+        Key: 'name' + '_3.jpg',
         Body: photo3File,
-      };
+      }
 
-      s3.upload(params3, function (err, data){
-        if(err) {
-          console.log("업로드 오류", err);
+      s3.upload(params3, function (err, data) {
+        if (err) {
+          console.log('업로드 오류', err)
         } else {
-          console.log("업로드 성공", data);
+          console.log('업로드 성공', data)
         }
-      });
+      })
     }
- 
+
     if (photo4File) {
-      const params4={
+      const params4 = {
         Bucket: BUCKET,
-        Key : "name"+"_4.jpg",
+        Key: 'name' + '_4.jpg',
         Body: photo4File,
-      };
+      }
 
-      s3.upload(params4, function (err, data){
-        if(err) {
-          console.log("업로드 오류", err);
+      s3.upload(params4, function (err, data) {
+        if (err) {
+          console.log('업로드 오류', err)
         } else {
-          console.log("업로드 성공", data);
+          console.log('업로드 성공', data)
         }
-      });      
+      })
     }
 
-    router.push("/signup/new/detail")
+    router.push('/signup/new/detail')
   }
-  
-  const encodeFileToBase64 = (fileBlob : any, num : number) =>{
-    const reader = new FileReader();
-    reader.readAsDataURL(fileBlob);
-    return new Promise((resolve)=>{
+
+  const encodeFileToBase64 = (fileBlob: any, num: number) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(fileBlob)
+    return new Promise((resolve) => {
       reader.onload = () => {
-        if(num === 1){
-          setPhoto1(reader.result);
-        } else if(num === 2){
-          setPhoto2(reader.result);
-        } else if(num === 3){
-          setPhoto3(reader.result);
-        } else{
-          setPhoto4(reader.result);
+        if (num === 1) {
+          setPhoto1(reader.result)
+        } else if (num === 2) {
+          setPhoto2(reader.result)
+        } else if (num === 3) {
+          setPhoto3(reader.result)
+        } else {
+          setPhoto4(reader.result)
         }
-        resolve();
+        resolve()
       }
     })
   }
@@ -178,7 +178,7 @@ export default function SignUpPhotoPage() {
     >
       <div className="grid grid-cols-2 grid-rows-2 gap-4 rounded-lg px-10">
         <div
-          className="flex h-56 cursor-pointer items-center justify-center rounded-lg border-2 border-dotted"
+          className="flex h-56 cursor-pointer items-center justify-center rounded-lg border-2 border-dotted border-black bg-white"
           onClick={onClickPhoto1}
         >
           {photo1 ? (
@@ -193,7 +193,7 @@ export default function SignUpPhotoPage() {
               height={48}
               src={Icon}
               alt={'add'}
-              className="pointer-events-none opacity-50"
+              className="pointer-events-none opacity-80"
             />
           )}
         </div>
@@ -205,7 +205,7 @@ export default function SignUpPhotoPage() {
           ref={photo1Input}
         />
         <div
-          className="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dotted text-center"
+          className="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dotted border-black bg-white text-center"
           onClick={onClickPhoto2}
         >
           {photo2 ? (
@@ -220,7 +220,7 @@ export default function SignUpPhotoPage() {
               height={48}
               src={Icon}
               alt={'add'}
-              className="pointer-events-none opacity-50"
+              className="pointer-events-none opacity-80"
             />
           )}
         </div>
@@ -232,7 +232,7 @@ export default function SignUpPhotoPage() {
           ref={photo2Input}
         />
         <div
-          className="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dotted text-center"
+          className="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dotted border-black bg-white text-center"
           onClick={onClickPhoto3}
         >
           {photo3 ? (
@@ -247,7 +247,7 @@ export default function SignUpPhotoPage() {
               height={48}
               src={Icon}
               alt={'add'}
-              className="pointer-events-none opacity-50"
+              className="pointer-events-none opacity-80"
             />
           )}
         </div>
@@ -259,7 +259,7 @@ export default function SignUpPhotoPage() {
           ref={photo3Input}
         />
         <div
-          className="flex cursor-pointer items-center  justify-center rounded-lg border-2 border-dotted text-center"
+          className="flex cursor-pointer items-center  justify-center rounded-lg border-2 border-dotted border-black bg-white text-center"
           onClick={onClickPhoto4}
         >
           {photo4 ? (
@@ -274,7 +274,7 @@ export default function SignUpPhotoPage() {
               height={48}
               src={Icon}
               alt={'add'}
-              className="pointer-events-none opacity-50"
+              className="pointer-events-none opacity-80"
             />
           )}
         </div>
