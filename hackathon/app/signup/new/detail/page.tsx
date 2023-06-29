@@ -22,20 +22,20 @@ export default function SignUpDetailPage() {
       btnText="다음"
       btnEvent={onClick}
     >
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 overflow-y-auto">
         <div>
           <label
             htmlFor="detail"
-            className="label cursor-pointer font-semibold"
+            className="label font-semibold"
           >
             나의 정보
           </label>
           <textarea
             id="detail"
             className="textarea mb-3 w-full resize-none"
-          ></textarea>
+          />
           <div>
-            <label htmlFor="edu" className="label cursor-pointer font-semibold">
+            <label htmlFor="edu" className="label font-semibold">
               학력
             </label>
             <select id="edu" className="select mb-3  w-40">
@@ -52,7 +52,7 @@ export default function SignUpDetailPage() {
               아르바이트 근무 경험이 있다면?
             </div>
             <div>
-              <label htmlFor="company" className="cursor-pointer font-semibold label">
+              <label htmlFor="company" className="font-semibold label">
                 회사명
               </label>
               <input
@@ -85,14 +85,14 @@ export default function SignUpDetailPage() {
             <div>
               <label
                 htmlFor="exp"
-                className="label cursor-pointer font-semibold"
+                className="label font-semibold"
               >
                 근무를 통한 나의 경험
               </label>
               <textarea
                 id="detail"
                 className="textarea w-full resize-none"
-              ></textarea>
+              />
             </div>
           </div>
         </div>
