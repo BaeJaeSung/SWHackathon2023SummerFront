@@ -43,7 +43,7 @@ export default function ChatPage() {
       <h2 className="mb-5 mt-10 text-2xl font-bold">채팅</h2>
       <div className="flex w-full flex-wrap gap-5 overflow-y-auto">
         <div
-          className="flex h-32 w-full shrink-0 cursor-pointer flex-nowrap items-center gap-3 rounded-lg bg-white p-5"
+          className="flex h-24 w-full shrink-0 cursor-pointer flex-nowrap items-center gap-3 rounded-lg bg-white p-5"
           onClick={() => setVisible(!visible)}
         >
           <div className="rounded-full  pr-1  text-white">
@@ -57,7 +57,7 @@ export default function ChatPage() {
           </div>
         </div>
         <div
-          className="flex h-32 w-full shrink-0 cursor-pointer flex-nowrap items-center gap-3 rounded-lg bg-white p-5"
+          className="flex h-24 w-full shrink-0 cursor-pointer flex-nowrap items-center gap-3 rounded-lg bg-white p-5"
           onClick={() => setVisible(!visible)}
         >
           <div className="rounded-full  pr-1  text-white">
