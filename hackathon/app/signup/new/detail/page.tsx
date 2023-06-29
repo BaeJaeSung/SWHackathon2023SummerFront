@@ -1,5 +1,6 @@
 'use client'
 import SignUpLayout from '@/components/signUpLayout'
+import { chatgptCreate } from '@/lib/api'
 import axios from 'axios'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
@@ -47,6 +48,7 @@ export default function SignUpDetailPage() {
   const [company, setCompany] = useState('')
   const [period, setPeriod] = useState('3일 이하')
   const [exp, setExp] = useState('')
+  const [loading, setLoading] = useState(false)
 
   return (
     <SignUpLayout
@@ -55,39 +57,32 @@ export default function SignUpDetailPage() {
       btnText="가입 완료"
       btnEvent={onClick}
     >
+      {loading && (
+        <div className="absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center bg-black bg-opacity-30">
+          <div className="flex h-1/3 w-2/3 flex-col items-center justify-center gap-1 rounded-3xl bg-[#00396E]">
+            <div className="mb-8 flex flex-col items-center justify-center">
+              <p className="text-2xl font-bold text-white">
+                잠시만 기다려주세요
+              </p>
+              <p className="text-[#83FFA6]">
+                AI가 열심히 자기 소개서를 생성중이예요!
+              </p>
+            </div>
+
+            <span className="loading loading-spinner loading-lg text-secondary"></span>
+          </div>
+        </div>
+      )}
       <div className="flex flex-col gap-5 overflow-y-auto">
         <div>
-          <label htmlFor="detail" className="label font-semibold">
-            나의 정보
-          </label>
-          <textarea
-            id="detail"
-            className="textarea mb-3 w-full resize-none bg-white"
-            value={detail}
-            onChange={(e) => {
-              setDetail(e.target.value)
-            }}
-          ></textarea>
-          <div>
-            <label htmlFor="edu" className="label font-semibold">
-              학력
-            </label>
-            <select
-              id="edu"
-              className="select mb-3  w-40 bg-white"
-              defaultValue={edu}
-              onChange={(e) => {
-                setEdu(e.target.value)
-              }}
-            >
-              <option value="대졸">대졸</option>
-              <option value="초졸">초졸</option>
-              <option value="중졸">중졸</option>
-              <option value="고졸">고졸</option>
-            </select>
-          </div>
-          <div className="my-3 font-semibold">
-            아르바이트 근무 경험이 있다면?
+          <div className="my-3 mb-5 text-lg font-semibold">
+            <h2 className="mb-3 text-2xl font-bold text-[#00396E]">
+              AI 자동 생성 자기소개서
+            </h2>
+            <p className="text-[#9B9B9B]">회사 근무 정보를 입력하면</p>
+            <p className="text-[#9B9B9B]">
+              AI가 나의 정보를 자동으로 작성해줘요!
+            </p>
           </div>
           <div className="rounded-xl bg-white p-5">
             <div>
@@ -148,6 +143,61 @@ export default function SignUpDetailPage() {
                 ></textarea>
               </div>
             </div>
+            <div>
+              <label htmlFor="edu" className="label font-semibold">
+                학력
+              </label>
+              <select
+                id="edu"
+                className="select mb-3  w-40 bg-[#ECEFF4] "
+                defaultValue={edu}
+                onChange={(e) => {
+                  setEdu(e.target.value)
+                }}
+              >
+                <option value="대졸">대졸</option>
+                <option value="초졸">초졸</option>
+                <option value="중졸">중졸</option>
+                <option value="고졸">고졸</option>
+              </select>
+            </div>
+            <button
+              className="btn mt-5 h-16 w-full border-none bg-[#C467EF] text-lg font-bold text-white"
+              onClick={(e) => {
+                e.preventDefault()
+                setLoading(true)
+                chatgptCreate(
+                  localStorage.getItem('id'),
+                  localStorage.getItem('name'),
+                  parseInt(localStorage.getItem('age')),
+                  company,
+                  period,
+                  exp,
+                  edu,
+                ).then((res) => {
+                  setDetail(res.response)
+                  setLoading(false)
+                })
+              }}
+            >
+              AI 자동 생성하기
+            </button>
+          </div>
+          <div className="mt-8">
+            <h2 className=" text-2xl font-bold text-[#00396E]">
+              직접 자기소개서 작성하기
+            </h2>
+            <label htmlFor="detail" className="label font-semibold">
+              자기 소개
+            </label>
+            <textarea
+              id="detail"
+              className="textarea mb-3 h-32 w-full resize-none bg-white"
+              value={detail}
+              onChange={(e) => {
+                setDetail(e.target.value)
+              }}
+            ></textarea>
           </div>
         </div>
       </div>
