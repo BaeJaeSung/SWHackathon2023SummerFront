@@ -19,7 +19,6 @@ export default function SignUpPage() {
   const onClickOld = () => {
     setType(1)
   }
-  localStorage.setItem('type', '-1')
   return (
     <SignUpLayout
       textTop="반갑습니다!"
@@ -38,8 +37,8 @@ export default function SignUpPage() {
           <div className="text-2xl font-semibold text-white">청년이에요</div>
         </div>
         <div
-          className={`${type == 1 ? 'bg-[#35FF6E]' : 'bg-gray-300'} flex
-            h-56 cursor-pointer flex-col justify-between rounded-md bg-gray-300 p-10
+          className={`${type == 1 ? 'bg-[#35FF6E]' : 'bg-gray-300'} rounded-m
+            flex h-56 cursor-pointer flex-col justify-between p-10
           hover:bg-[#35FF6E]`}
           onClick={onClickOld}
         >
