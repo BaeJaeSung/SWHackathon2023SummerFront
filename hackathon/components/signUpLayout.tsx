@@ -18,7 +18,7 @@ export default function SignUpLayout({
   btnEvent,
 }: SignupLayoutProps) {
   return (
-    <div className="flex h-full flex-col justify-between gap-10 px-10 py-10">
+    <div className="flex h-full flex-col justify-around gap-10 px-10 py-10">
       <h2 className="text-3xl font-bold leading-relaxed">
         {textTop}
         <br />
