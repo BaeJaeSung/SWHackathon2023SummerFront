@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import LOGO_FOOTER from "@/public/logo_footer.png"
+import LOGO_FOOTER from "@/public/old.png"
 import HEART from "@/public/heart.png"
 import MESSAGE from "@/public/mess.png"
 import MY from "@/public/my.png"
@@ -12,7 +12,7 @@ export default function Header() {
         height={35}
         src={LOGO_FOOTER}
         alt={'logo'}
-        className="cursor-pointer hover:opacity-80"
+        className="cursor-pointer hover:opacity-80 hover:"
       />
       <Image
         width={35}

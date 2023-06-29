@@ -2,40 +2,40 @@ import Image from 'next/image'
 
 export default function GridCard() {
   return (
-    <div className="rounded-lg bg-[#292929] p-8 text-white">
+    <div className="rounded-lg bg-white p-8 text-[#292929]">
       <div className="mb-5 flex items-center justify-between">
         <div>
-          <span className="text-xl font-semibold text-white">
-            이래영 <span className="text-lg text-[#35FF6E]">26</span>
+          <span className="text-2xl font-semibold text-[#292929]">
+            이래영 <span className="text-base text-[#8F00FF]">26</span>
           </span>
         </div>
-        <div>
+        {/*<div>
           <button className="rounded-full bg-white px-4 py-1 text-xs font-semibold text-[#292929]">
             축소하기
           </button>
-        </div>
+  </div>*/}
       </div>
-      <div className="mb-5 text-white">
+      <div className="mb-5 text-[#292929]">
         안녕하세요, 카페 아르바이트를 구하고 있는 22살 이래영입니다. 저는
         바리스타 자격증 1급이 있으며, 책임감이 강합니다. 최근 1년간 집에서
         무기력하게 지내다 빛나는 연결을 접한 후 다시 바리스타의 꿈을 꾸기
         시작했어요!
       </div>
 
-      <div className="mb-3 font-semibold text-white">
-        학력<span className="font-normal text-white">&nbsp;대졸</span>
+      <div className="mb-3 font-semibold text-[#292929]">
+        학력<span className="font-normal text-[#292929]">&nbsp;대졸</span>
       </div>
-      <div className="mb-3 font-semibold text-white">
+      <div className="mb-3 font-semibold text-[#292929]">
         아르바이트 근무 경험
-        <span className="font-normal text-white">&nbsp;있음</span>
+        <span className="font-normal text-[#292929]">&nbsp;있음</span>
       </div>
 
       <div className="mb-3 grid items-center justify-between">
         <div className="flex">
-          <div className="bg-gray mr-4 h-48 w-1 rounded-sm bg-[#35FF6E]">
+          <div className="bg-gray mr-4 h-48 w-1 rounded-sm bg-[#8F00FF]">
             &nbsp;
           </div>
-          <div className="w-full  rounded-lg bg-white p-5">
+          <div className="w-full  rounded-lg bg-[#ECEFF4] p-5">
             <div className="mb-3 font-semibold text-[#292929]">
               회사명
               <span className="font-normal text-[#292929]">&nbsp;우리카페</span>
