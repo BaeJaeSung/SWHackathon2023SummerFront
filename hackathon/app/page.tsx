@@ -1,65 +1,67 @@
 'use client'
-import GridCard from '@/components/gridcard'
-import Image from 'next/image'
-import HIKI from '@/public/hiki.png'
 import { useState, useEffect } from 'react'
-import CANCEL from '@/public/cancel.svg'
-import LIKE from '@/public/like.svg'
-import Keyword from '@/components/keyword'
+import axios from "axios"
+import MainCard from '@/components/maincard'
 
 export default function MainPage() {
+  const [items, setItems] = useState([
+    {
+      nickname: '히키',
+      info: '하하',
+      studycareer: '제주여자고등학교',
+      careers: {
+        company_name: '한스델리',
+        period: 2,
+        experience: '홀',
+      },
+    },
+  ])
   const [showFull, setShowFull] = useState(false)
+  /*
+  const [nickname, setNickname] = useState('히키')
+  const [info, setInfo] = useState('하하')
+  const [studycareer, setStudycareer] = useState('제주여자고등학교')
+  const [careers, setCareers] = useState({
+    pid: 0,
+    uid: "",
+    company_name: "한스델리",
+    period: 2,
+    experience: "홀",
+  })*/
 
-  return (
-    <div className="relative flex h-[90%] w-full justify-center">
-      <div
-        className={`relative w-full ${
-          showFull && 'overflow-y-auto'
-        } overflow-hidden rounded-xl`}
-      >
-        <div className="flex items-center justify-center rounded-lg p-0">
-          <Image
-            src={HIKI}
-            width={100}
-            height={100}
-            alt="hiki"
-            className="h-full w-full object-cover"
-          />
-        </div>
-        <div
-          className={`absolute bottom-0 left-0 right-0 top-0 ${
-            !showFull && 'translate-y-2/3'
-          } transition-transform duration-500 ease-in-out`}
-        >
-          <div
-            className={`absolute -top-14 left-5 flex gap-3 rounded-lg transition-all `}
-          >
-            <Keyword text="😄 경력 3개월" />
-            <Keyword text="👨‍🎓 대졸" />
-          </div>
-          <GridCard showFull={showFull} setShowFull={setShowFull} />
-        </div>
-      </div>
-      <div
-        className={`absolute -bottom-10 right-0 z-50 flex ${
-          showFull && 'hidden'
-        }`}
-      >
-        <Image
-          src={CANCEL}
-          alt="cancel"
-          width={100}
-          height={100}
-          className="m-[-10px] cursor-pointer"
-        />
-        <Image
-          src={LIKE}
-          alt="like"
-          width={100}
-          height={100}
-          className="m-[-10px] cursor-pointer"
-        />
-      </div>
-    </div>
-  )
+  useEffect(() => {
+    axios
+      .post('http://3.39.72.59:3000/match/load_candidate_hiki', {
+        id: localStorage.getItem('id'),
+      })
+      .then((res) => {
+        console.log(res)
+        //for(let i=0; i<res.data.length; i++){
+        res.data.map((item: any, index: number) => setItems((prevItems)=>
+          [...prevItems, {
+            nickname: item.nickname,
+            info: item.info,
+            studycareer: item.study_career,
+            careers: {
+              company_name: item.career[0]?.company_name,
+              period: item.career[0]?.period,
+              experience: item.career[0]?.experience,
+            },
+          }]
+        ))
+
+          //}
+      })
+      .catch((err) => console.log(err))
+  }, [])
+  
+  useEffect(() => {
+
+
+        console.log(items)
+  },[items])
+
+  return <div className='flex gap-10 w-full overflow-hidden h-full'>{items && items.map((item) => 
+      <MainCard showFull={showFull} setShowFull={setShowFull} nickname={item.nickname} info={item.info} studycareer={item.studycareer} careers={item.careers} />
+  )}</div>
 }

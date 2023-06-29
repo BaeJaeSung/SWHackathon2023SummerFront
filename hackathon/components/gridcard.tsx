@@ -2,51 +2,29 @@
 import Image from 'next/image'
 import UP from '@/public/up.png'
 import DOWN from '@/public/down.png'
-import { Dispatch, SetStateAction, useState, useEffect } from 'react'
-import axios from "axios"
+import { Dispatch, SetStateAction } from 'react'
 
 interface GridCardProps {
   showFull: boolean
   setShowFull: Dispatch<SetStateAction<boolean>>
+  nickname: string
+  info: string
+  studycareer: string
+  careers: {
+    company_name: string
+    period: number
+    experience: string
+  }
 }
 
-export default function GridCard({ showFull, setShowFull }: GridCardProps) {
-  const [nickname, setNickname] = useState('')
-  const [info, setInfo] = useState('')
-  const [studycareer, setStudycareer] = useState('')
-  const [careers, setCareers] = useState({
-    pid: 0,
-    uid: "",
-    company_name:"",
-    period:0, // string으로 수정 예정
-    experience:""
-  })
-
-  useEffect(() => {
-    axios.post('http://3.39.72.59:3000/match/load_candidate_hiki', {
-      id: localStorage.getItem('id'),
-    }).then((res) => {
-      console.log(res)
-      //for(let i=0; i<res.data.length; i++){
-        setNickname(res.data[0].nickname)
-        setInfo(res.data[0].info)
-        setStudycareer(res.data[0].study_career)
-        
-        // career는 여러개
-        setCareers({
-          pid: res.data[0].career[0].pid,
-          uid: res.data[0].career[0].uid,
-          company_name: res.data[0].career[0].company_name,
-          period: res.data[0].career[0].period,
-          experience: res.data[0].career[0].experience
-        })
-
-      //}
-    }).catch((err) => console.log(err))    
-  },[])
-
-
-
+export default function GridCard({
+  showFull,
+  setShowFull,
+  nickname,
+  info,
+  studycareer,
+  careers,
+}: GridCardProps) {
 
   const onClickDown = () => {
     setShowFull(!showFull)
@@ -95,39 +73,44 @@ export default function GridCard({ showFull, setShowFull }: GridCardProps) {
       </div>
 
       <div className="mb-1 font-semibold text-[#292929]">
-        학력<span className="font-normal text-[#535353]">&nbsp;{studycareer}</span>
+        학력
+        <span className="font-normal text-[#535353]">&nbsp;{studycareer}</span>
       </div>
       <div className="mb-4 font-semibold text-[#292929]">
         아르바이트 근무 경험
-        <span className="font-normal text-[#535353]">&nbsp;{careers ? "있음" : "없음"}</span>
+        <span className="font-normal text-[#535353]">
+          &nbsp;{careers ? '있음' : '없음'}
+        </span>
       </div>
       {careers && (
         <div className="mb-5 w-full items-center justify-between">
-        <div className="flex ">
-          <div className="bg-gray mr-4 h-48 w-1 rounded-sm bg-[#00396E]">
-            &nbsp;
-          </div>
-          <div className="w-full  rounded-lg bg-[#ECEFF4] p-5">
-            <div className="mb-3 font-semibold text-[#00396E]">
-              회사명
-                <span className="font-normal text-[#535353]">&nbsp;{careers.company_name}</span>
+          <div className="flex ">
+            <div className="bg-gray mr-4 h-48 w-1 rounded-sm bg-[#00396E]">
+              &nbsp;
             </div>
-            <div className="mb-3 font-semibold text-[#00396E]">
-              근무기간
-              <span className="font-normal text-[#535353]">&nbsp;{careers.period}개월</span>
-            </div>
-            <div className="font-semibold text-[#00396E]">
-              근무를 통한 나의 경험
-              <p className="mt-1 font-normal text-[#535353]">
-                {careers.experience}
-              </p>
+            <div className="w-full  rounded-lg bg-[#ECEFF4] p-5">
+              <div className="mb-3 font-semibold text-[#00396E]">
+                회사명
+                <span className="font-normal text-[#535353]">
+                  &nbsp;{careers.company_name}
+                </span>
+              </div>
+              <div className="mb-3 font-semibold text-[#00396E]">
+                근무기간
+                <span className="font-normal text-[#535353]">
+                  &nbsp;{careers.period}개월
+                </span>
+              </div>
+              <div className="font-semibold text-[#00396E]">
+                근무를 통한 나의 경험
+                <p className="mt-1 font-normal text-[#535353]">
+                  {careers.experience}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        </div> 
-      )
-      }
-
+      )}
 
       <div className="mb-3 font-semibold text-[#292929]">
         사진
@@ -135,7 +118,9 @@ export default function GridCard({ showFull, setShowFull }: GridCardProps) {
           <div className="flex gap-5">
             <div className=" h-[180px] w-[150px] flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white">
               <Image
-                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/name_1.jpg`}
+                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${localStorage.getItem(
+                  'id',
+                )}_1.jpg`}
                 alt="ex"
                 width={150}
                 height={180}
@@ -144,7 +129,9 @@ export default function GridCard({ showFull, setShowFull }: GridCardProps) {
             </div>
             <div className="flex h-[180px]  w-[150px] flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white">
               <Image
-                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/name_2.jpg`}
+                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${localStorage.getItem(
+                  'id',
+                )}_2.jpg`}
                 alt="ex"
                 width={150}
                 height={180}
@@ -153,7 +140,9 @@ export default function GridCard({ showFull, setShowFull }: GridCardProps) {
             </div>
             <div className="flex h-[180px] w-[150px] flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white">
               <Image
-                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/name_3.jpg`}
+                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${localStorage.getItem(
+                  'id',
+                )}_3.jpg`}
                 alt="ex"
                 width={150}
                 className="h-full w-full object-cover"
@@ -162,7 +151,9 @@ export default function GridCard({ showFull, setShowFull }: GridCardProps) {
             </div>
             <div className="flex h-[180px]  w-[150px] flex-shrink-0 items-center justify-center  overflow-hidden rounded-lg bg-white">
               <Image
-                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/name_4.jpg`}
+                src={`https://swhackathon.s3.ap-northeast-2.amazonaws.com/${localStorage.getItem(
+                  'id',
+                )}_4.jpg`}
                 alt="ex"
                 className="h-full w-full object-cover"
                 width={150}
