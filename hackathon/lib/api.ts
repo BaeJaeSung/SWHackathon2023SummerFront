@@ -22,7 +22,7 @@ function fetchData(url: string, data: any): Promise<any> {
 }
 
 // API 호출을 위한 함수
-function fetchGetDataExist(url:string) {
+function fetchGetDataExist(url: string) {
   const apiUrl = url;
   return new Promise((resolve, reject) => {
     axios.get(apiUrl)
@@ -34,7 +34,7 @@ function fetchGetDataExist(url:string) {
       });
   });
 }
-export const getData = async (url:string) => {
+export const getData = async (url: string) => {
   return fetchGetDataExist(url)
     .then(data => {
       return true;
@@ -192,7 +192,10 @@ export const matchReceived = async (id: string, type: number) => {
   };
   return fetchData('match/received', postData)
     .then(data => {
-      return data.map(({ name, type, intro }: any) => { return { name, type, intro } })
+      if (type == 0) {
+        return data.map(({ name, type, intro }: any) => { return { name, type, intro } })
+      }
+      else { return data.map(({ nickname, info, study_career }: any) => { return { nickname, info, study_career } }) }
     })
     .catch(error => {
       console.error('API 호출 에러:', error);
@@ -207,7 +210,10 @@ export const matchMyApply = async (id: string, type: number) => {
   };
   return fetchData('match/my_apply', postData)
     .then(data => {
-      return data.map(({ name, type, intro }: any) => { return { name, type, intro } })
+      if (type == 0) {
+        return data.map(({ name, type, intro }: any) => { return { name, type, intro } })
+      }
+      else { return data.map(({ nickname, info, study_career }: any) => { return { nickname, info, study_career } }) }
     })
     .catch(error => {
       console.error('API 호출 에러:', error);

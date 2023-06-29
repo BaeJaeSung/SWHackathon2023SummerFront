@@ -41,7 +41,7 @@ export default function ChatPage() {
       setChatList(res.contents)
     })
   }, [cId])
-  return localStorage.getItem('type') == '0' ? (
+  return (
     <>
       <h2 className="text-2xl font-bold">나와 매칭된 사장님</h2>
       <div className="mt-5 overflow-x-auto">
@@ -151,7 +151,5 @@ export default function ChatPage() {
         </div>
       </div>
     </>
-  ) : (
-    <></>
   )
 }
