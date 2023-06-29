@@ -18,8 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={noto.className}>
-        <div className="flex h-screen w-full flex-wrap items-center justify-center bg-slate-300">
-          <div className="flex h-full w-full max-w-lg flex-col justify-between bg-white">
+        <div className="flex h-screen w-full flex-wrap items-center justify-center">
+          <div className="bg-gray-10 flex h-full w-full max-w-lg flex-col justify-between bg-[#EFEFED]">
             <Header />
             <main className="h-full w-full">{children}</main>
             {/* <Footer /> */}
