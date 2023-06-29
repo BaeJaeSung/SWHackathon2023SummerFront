@@ -64,6 +64,9 @@ export default function MainPage() {
 
   useEffect(() => {
     const id = localStorage.getItem("id")
+    userMyInfo(id).then((res)=>
+      
+    ) 
     matchLoadCandidateHiki(id).then((res) =>
       setItems([...res])
    )
