@@ -66,31 +66,75 @@ export default function ChatPage() {
       <h2 className="mb-5 mt-10 text-2xl font-bold">채팅</h2>
       <div className="flex flex-col gap-5 overflow-y-auto">
         <div className="w-full rounded-lg bg-white p-5">
-          <p className="text-lg font-semibold">미국카페</p>
-          <p className="text-sm text-gray-400">
-            미국카페와의 가장 최신 채팅이 들어갈 자리입니다.
-          </p>
+          <table>
+            <tr>
+              <td>
+                <div className="rounded-full  pr-1 text-white">
+                  <Image src={Purple} alt="profile" width={50} height={50} />
+                </div>
+              </td>
+              <td>
+                <p className="text-lg font-semibold">미국카페</p>
+                <p className="text-sm text-gray-400">
+                  미국카페와의 가장 최신 채팅이 들어갈 자리입니다.
+                </p>
+              </td>
+            </tr>
+          </table>
         </div>
         <div className="w-full rounded-lg bg-white p-5">
-          <p className="text-lg font-semibold">미국카페</p>
-          <p className="text-sm text-gray-400">
-            미국카페와의 가장 최신 채팅이 들어갈 자리입니다.
-          </p>
+          <table>
+            <tr>
+              <td>
+                <div className="rounded-full  pr-1  text-white">
+                  <Image src={Purple} alt="profile" width={50} height={50} />
+                </div>
+              </td>
+              <td>
+                <p className="text-lg font-semibold">미국카페</p>
+                <p className="text-sm text-gray-400">
+                  미국카페와의 가장 최신 채팅이 들어갈 자리입니다.
+                </p>
+              </td>
+            </tr>
+          </table>
         </div>
         <div className="w-full rounded-lg bg-white p-5">
-          <p className="text-lg font-semibold">미국카페</p>
-          <p className="text-sm text-gray-400">
-            미국카페와의 가장 최신 채팅이 들어갈 자리입니다.
-          </p>
+          <table>
+            <tr>
+              <td>
+                <div className="rounded-full  pr-1  text-white">
+                  <Image src={Purple} alt="profile" width={50} height={50} />
+                </div>
+              </td>
+              <td>
+                <p className="text-lg font-semibold">미국카페</p>
+                <p className="text-sm text-gray-400">
+                  미국카페와의 가장 최신 채팅이 들어갈 자리입니다.
+                </p>
+              </td>
+            </tr>
+          </table>
         </div>
         <div
-          className="w-full rounded-lg bg-white p-5"
+          className="w-full rounded-lg bg-white p-5 cursor-pointer"
           onClick={() => setVisible(!visible)}
         >
-          <p className="text-lg font-semibold">미국카페</p>
-          <p className="text-sm text-gray-400">
-            미국카페와의 가장 최신 채팅이 들어갈 자리입니다.
-          </p>
+          <table>
+            <tr>
+              <td>
+                <div className="rounded-full  pr-1  text-white">
+                  <Image src={Purple} alt="profile" width={50} height={50} />
+                </div>
+              </td>
+              <td>
+                <p className="text-lg font-semibold">미국카페</p>
+                <p className="text-sm text-gray-400">
+                  미국카페와의 가장 최신 채팅이 들어갈 자리입니다.
+                </p>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
       <div
