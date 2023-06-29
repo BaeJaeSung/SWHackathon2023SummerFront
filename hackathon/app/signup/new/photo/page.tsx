@@ -1,9 +1,10 @@
 'use client'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, SetStateAction } from 'react'
 import Image from 'next/image'
 import Icon from '@/public/add_circle_black_24dp.svg'
 import SignUpLayout from '@/components/signUpLayout'
 import AWS from "aws-sdk"
+import { useRouter } from 'next/navigation'
 
 const REGION = process.env.NEXT_PUBLIC_AWS_REGION;
 const ACCESS_KEY_ID = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY
@@ -30,6 +31,8 @@ export default function SignUpPhotoPage() {
   const photo2Input = useRef<HTMLInputElement>(null)
   const photo3Input = useRef<HTMLInputElement>(null)
   const photo4Input = useRef<HTMLInputElement>(null)
+
+  const router = useRouter()
 
   const onClickPhoto1 = () => {
     photo1Input?.current?.click()
@@ -77,66 +80,74 @@ export default function SignUpPhotoPage() {
     return false;
   }
 
-  const onClickButton = () => {
+  const onClick = () => {
     const s3 = new AWS.S3();
 
+    if (photo1File) {
+      const params1={
+        Bucket: "swhackathon",
+        Key : "name"+"_1.jpg",
+        Body: photo1File,
+      };
 
-    const params1={
-      Bucket: "swhackathon",
-      Key : "name"+"_1.jpg",
-      Body: photo1File,
-    };
+      s3.upload(params1, function (err, data){
+        if(err) {
+          console.log("업로드 오류", err);
+        } else {
+          console.log("업로드 성공", data);
+        }
+      });      
+    }
 
-    s3.upload(params1, function (err, data){
-      if(err) {
-        console.log("업로드 오류", err);
-      } else {
-        console.log("업로드 성공", data);
-      }
-    });
+    if (photo2File) {
+      const params2={
+        Bucket: BUCKET,
+        Key : "name"+"_2.jpg",
+        Body: photo2File,
+      };
 
-    const params2={
-      Bucket: BUCKET,
-      Key : "name"+"_2.jpg",
-      Body: photo2File,
-    };
+      s3.upload(params2, function (err, data){
+        if(err) {
+          console.log("업로드 오류", err);
+        } else {
+          console.log("업로드 성공", data);
+        }
+      });      
+    }
 
-    s3.upload(params2, function (err, data){
-      if(err) {
-        console.log("업로드 오류", err);
-      } else {
-        console.log("업로드 성공", data);
-      }
-    });
+    if (photo3File) {
+      const params3={
+        Bucket: BUCKET,
+        Key : "name"+"_3.jpg",
+        Body: photo3File,
+      };
 
-    const params3={
-      Bucket: BUCKET,
-      Key : "name"+"_3.jpg",
-      Body: photo3File,
-    };
+      s3.upload(params3, function (err, data){
+        if(err) {
+          console.log("업로드 오류", err);
+        } else {
+          console.log("업로드 성공", data);
+        }
+      });
+    }
+ 
+    if (photo4File) {
+      const params4={
+        Bucket: BUCKET,
+        Key : "name"+"_4.jpg",
+        Body: photo4File,
+      };
 
-    s3.upload(params3, function (err, data){
-      if(err) {
-        console.log("업로드 오류", err);
-      } else {
-        console.log("업로드 성공", data);
-      }
-    });
+      s3.upload(params4, function (err, data){
+        if(err) {
+          console.log("업로드 오류", err);
+        } else {
+          console.log("업로드 성공", data);
+        }
+      });      
+    }
 
-    const params4={
-      Bucket: BUCKET,
-      Key : "name"+"_4.jpg",
-      Body: photo4File,
-    };
-
-    s3.upload(params4, function (err, data){
-      if(err) {
-        console.log("업로드 오류", err);
-      } else {
-        console.log("업로드 성공", data);
-      }
-    });
-
+    router.push("/signup/new/detail")
   }
   
   const encodeFileToBase64 = (fileBlob : any, num : number) =>{
@@ -160,10 +171,10 @@ export default function SignUpPhotoPage() {
 
   return (
     <SignUpLayout
-      textTop='00님의'
+      textTop="00님의"
       textBottom="사진을 등록해주세요"
       btnText="다음"
-      btnEvent={onClickButton}
+      btnEvent={onClick}
     >
       <div className="grid grid-cols-2 grid-rows-2 gap-4 rounded-lg px-10">
         <div
@@ -171,16 +182,20 @@ export default function SignUpPhotoPage() {
           onClick={onClickPhoto1}
         >
           {photo1 ? (
-            <img className="w-full h-full object-contain" src={photo1} alt="preview-1"/>
-          ):
-          <Image
-            width={48}
-            height={48}
-            src={Icon}
-            alt={'add'}
-            className="pointer-events-none opacity-50"
-          />          
-          }
+            <img
+              className="h-full w-full object-contain"
+              src={photo1}
+              alt="preview-1"
+            />
+          ) : (
+            <Image
+              width={48}
+              height={48}
+              src={Icon}
+              alt={'add'}
+              className="pointer-events-none opacity-50"
+            />
+          )}
         </div>
         <input
           className="hidden"
@@ -194,16 +209,20 @@ export default function SignUpPhotoPage() {
           onClick={onClickPhoto2}
         >
           {photo2 ? (
-            <img className="w-full h-full object-contain" src={photo2} alt="preview-2"/>
-          ):
-          <Image
-            width={48}
-            height={48}
-            src={Icon}
-            alt={'add'}
-            className="pointer-events-none opacity-50"
-          />          
-          }
+            <img
+              className="h-full w-full object-contain"
+              src={photo2}
+              alt="preview-2"
+            />
+          ) : (
+            <Image
+              width={48}
+              height={48}
+              src={Icon}
+              alt={'add'}
+              className="pointer-events-none opacity-50"
+            />
+          )}
         </div>
         <input
           className="hidden"
@@ -217,16 +236,20 @@ export default function SignUpPhotoPage() {
           onClick={onClickPhoto3}
         >
           {photo3 ? (
-            <img className="w-full h-full object-contain" src={photo3} alt="preview-3"/>
-          ):
-          <Image
-            width={48}
-            height={48}
-            src={Icon}
-            alt={'add'}
-            className="pointer-events-none opacity-50"
-          />          
-          }
+            <img
+              className="h-full w-full object-contain"
+              src={photo3}
+              alt="preview-3"
+            />
+          ) : (
+            <Image
+              width={48}
+              height={48}
+              src={Icon}
+              alt={'add'}
+              className="pointer-events-none opacity-50"
+            />
+          )}
         </div>
         <input
           className="hidden"
@@ -240,16 +263,20 @@ export default function SignUpPhotoPage() {
           onClick={onClickPhoto4}
         >
           {photo4 ? (
-            <img className="w-full h-full object-contain" src={photo4} alt="preview-4"/>
-          ):
-          <Image
-            width={48}
-            height={48}
-            src={Icon}
-            alt={'add'}
-            className="pointer-events-none opacity-50"
-          />          
-          }
+            <img
+              className="h-full w-full object-contain"
+              src={photo4}
+              alt="preview-4"
+            />
+          ) : (
+            <Image
+              width={48}
+              height={48}
+              src={Icon}
+              alt={'add'}
+              className="pointer-events-none opacity-50"
+            />
+          )}
         </div>
         <input
           className="hidden"
