@@ -9,7 +9,7 @@ interface GridCardProps{
   setShowFull:Dispatch<SetStateAction<boolean>>
 }
 
-export default function GridCard({ showFull, setShowFull }: GridCardProps) {
+export default function GridCardNEW({ showFull, setShowFull }: GridCardProps) {
   const onClickDown = () => {
     setShowFull(!showFull)
   }
