@@ -142,7 +142,7 @@ export default function ChatPage() {
           !visible && 'translate-x-full'
         } flex flex-col justify-between bg-[#00396E] transition-transform duration-500 ease-in-out`}
       >
-        <nav className="relative flex h-24 w-full flex-col items-center justify-center gap-2">
+        <nav className="relative flex h-24 w-full flex-col items-center justify-center gap-2 py-3">
           <Image src={Logo} width={35} height={35} alt="logo" />
           <p className="text-lg font-bold text-white">한국카페</p>
 
