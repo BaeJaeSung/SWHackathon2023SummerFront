@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import axios from "axios"
+import axios from 'axios'
 import MainCard from '@/components/maincard'
 
 export default function MainPage() {
@@ -28,7 +28,7 @@ export default function MainPage() {
     period: 2,
     experience: "홀",
   })*/
-
+  localStorage.setItem('type', '0')
   useEffect(() => {
     axios
       .post('http://3.39.72.59:3000/match/load_candidate_hiki', {
@@ -37,31 +37,44 @@ export default function MainPage() {
       .then((res) => {
         console.log(res)
         //for(let i=0; i<res.data.length; i++){
-        res.data.map((item: any, index: number) => setItems((prevItems)=>
-          [...prevItems, {
-            nickname: item.nickname,
-            info: item.info,
-            studycareer: item.study_career,
-            careers: {
-              company_name: item.career[0]?.company_name,
-              period: item.career[0]?.period,
-              experience: item.career[0]?.experience,
+        res.data.map((item: any, index: number) =>
+          setItems((prevItems) => [
+            ...prevItems,
+            {
+              nickname: item.nickname,
+              info: item.info,
+              studycareer: item.study_career,
+              careers: {
+                company_name: item.career[0]?.company_name,
+                period: item.career[0]?.period,
+                experience: item.career[0]?.experience,
+              },
             },
-          }]
-        ))
+          ]),
+        )
 
-          //}
+        //}
       })
       .catch((err) => console.log(err))
   }, [])
-  
+
   useEffect(() => {
+    console.log(items)
+  }, [items])
 
-
-        console.log(items)
-  },[items])
-
-  return <div className='flex gap-10 w-full overflow-hidden h-full'>{items && items.map((item) => 
-      <MainCard showFull={showFull} setShowFull={setShowFull} nickname={item.nickname} info={item.info} studycareer={item.studycareer} careers={item.careers} />
-  )}</div>
+  return (
+    <div className="flex h-full w-full gap-10 overflow-hidden">
+      {items &&
+        items.map((item) => (
+          <MainCard
+            showFull={showFull}
+            setShowFull={setShowFull}
+            nickname={item.nickname}
+            info={item.info}
+            studycareer={item.studycareer}
+            careers={item.careers}
+          />
+        ))}
+    </div>
+  )
 }
