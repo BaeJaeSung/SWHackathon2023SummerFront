@@ -20,8 +20,8 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={noto.className}>
-        <div className="flex max-h-screen w-full flex-wrap justify-center">
-          <div className="flex h-screen w-full max-w-lg flex-col justify-between bg-[#ECEFF4]">
+        <div className="flex h-screen w-full flex-wrap justify-center">
+          <div className="flex h-full w-full max-w-lg flex-col justify-between bg-[#ECEFF4]">
             {session && <Header />}
             <main className="h-full w-full overflow-y-auto p-10">
               {children}
