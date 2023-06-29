@@ -17,6 +17,7 @@ export const authOption = {
           id: credentials?.id,
           pw: credentials?.password,
         })
+        console.log(res.data)
         if (res.data) {
           return {}
         }

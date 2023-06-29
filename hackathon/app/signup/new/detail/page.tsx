@@ -24,15 +24,12 @@ export default function SignUpDetailPage() {
     >
       <div className="flex flex-col gap-5 overflow-y-auto">
         <div>
-          <label
-            htmlFor="detail"
-            className="label font-semibold"
-          >
+          <label htmlFor="detail" className="label font-semibold">
             나의 정보
           </label>
           <textarea
             id="detail"
-            className="textarea mb-3 w-full resize-none"
+            className="textarea mb-3 w-full resize-none bg-white"
           ></textarea>
           <div>
             <label htmlFor="edu" className="label font-semibold">
@@ -47,52 +44,54 @@ export default function SignUpDetailPage() {
               <option value="고졸">고졸</option>
             </select>
           </div>
-          <div>
-            <div className="my-3 font-semibold">
-              아르바이트 근무 경험이 있다면?
-            </div>
+          <div className="my-3 font-semibold">
+            아르바이트 근무 경험이 있다면?
+          </div>
+          <div className="rounded-xl bg-white p-5">
             <div>
-              <label htmlFor="company" className="cursor-pointer font-semibold label">
-                회사명
-              </label>
-              <input
-                id="company"
-                type="text"
-                className="input mb-3 w-full bg-white"
-              />
+              <div>
+                <label
+                  htmlFor="company"
+                  className="label cursor-pointer font-semibold"
+                >
+                  회사명
+                </label>
+                <input
+                  id="company"
+                  type="text"
+                  className="input mb-3 w-full bg-[#ECEFF4]"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <label
-              htmlFor="period"
-              className="label cursor-pointer font-semibold"
-            >
-              근무 기간
-            </label>
-            <select id="period" className="select mb-3 w-40 bg-white">
-              <option value="3일 이하" defaultValue={period}>
-                3일 이하
-              </option>
-              <option>1주일</option>
-              <option>1개월</option>
-              <option>3개월</option>
-              <option>6개월</option>
-              <option>1년</option>
-              <option>1년 이상</option>
-            </select>
-          </div>
-          <div>
             <div>
               <label
-                htmlFor="exp"
-                className="label font-semibold"
+                htmlFor="period"
+                className="label cursor-pointer font-semibold"
               >
-                근무를 통한 나의 경험
+                근무 기간
               </label>
-              <textarea
-                id="detail"
-                className="textarea w-full resize-none"
-              ></textarea>
+              <select id="period" className="select mb-3 w-40 bg-[#ECEFF4]">
+                <option value="3일 이하" defaultValue={period}>
+                  3일 이하
+                </option>
+                <option>1주일</option>
+                <option>1개월</option>
+                <option>3개월</option>
+                <option>6개월</option>
+                <option>1년</option>
+                <option>1년 이상</option>
+              </select>
+            </div>
+            <div>
+              <div>
+                <label htmlFor="exp" className="label font-semibold">
+                  근무를 통한 나의 경험
+                </label>
+                <textarea
+                  id="detail"
+                  className="textarea w-full resize-none bg-[#ECEFF4]"
+                ></textarea>
+              </div>
             </div>
           </div>
         </div>
