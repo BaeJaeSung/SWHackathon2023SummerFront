@@ -1,9 +1,12 @@
+'use client'
 import Image from 'next/image'
 import Dummy from '@/public/dummy.png'
+import { useState } from 'react'
 
 export default function ChatPage() {
+  const [visible, setVisible] = useState(false)
   return (
-    <div>
+    <>
       <h2 className="text-2xl font-bold">나와 매칭된 사장님</h2>
       <div className="mt-5 overflow-x-auto">
         <div className="flex w-full flex-nowrap gap-3 ">
@@ -76,13 +79,21 @@ export default function ChatPage() {
             미국카페와의 가장 최신 채팅이 들어갈 자리입니다.
           </p>
         </div>
-        <div className="w-full rounded-lg bg-white p-5">
+        <div
+          className="w-full rounded-lg bg-white p-5"
+          onClick={() => setVisible(!visible)}
+        >
           <p className="text-lg font-semibold">미국카페</p>
           <p className="text-sm text-gray-400">
             미국카페와의 가장 최신 채팅이 들어갈 자리입니다.
           </p>
         </div>
       </div>
-    </div>
+      <div
+        className={`absolute bottom-0 left-0 right-0 top-0 z-50 ${
+          !visible && 'translate-x-full'
+        } bg-[#00396E] ease-in-out`}
+      ></div>
+    </>
   )
 }

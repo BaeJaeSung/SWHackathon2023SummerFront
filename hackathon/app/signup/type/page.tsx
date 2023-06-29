@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation'
 import SignUpLayout from '@/components/signUpLayout'
 import ICON_NEW from '@/public/new.png'
-import ICON_OLD from '@/public/old.png'
+import ICON_OLD from '@/public/old.svg'
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -42,7 +42,7 @@ export default function SignUpPage() {
           hover:bg-[#35FF6E]`}
           onClick={onClickOld}
         >
-          <Image src={ICON_OLD} width={48} height={48} alt="자영업자" />
+          <Image src={ICON_OLD} width={55} height={55} alt="자영업자" />
           <div className="text-2xl font-semibold">사장님이에요</div>
         </div>
       </div>

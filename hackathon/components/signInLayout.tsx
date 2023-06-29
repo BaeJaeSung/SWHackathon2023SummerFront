@@ -29,16 +29,18 @@ export default function SignInLayout({
         {textBottom}
       </h2>
       {children}
-      <button
-        className="btn w-full border-none bg-[#292929] text-lg text-[#35FF6E] hover:bg-[#292929]"
-        onClick={btnEvent}
-      >
-        {btnText}
-      </button>
-      <div className="mt-2 text-right">
-        <span className="cursor-pointer text-[#9B9B9B]" onClick={subEvent}>
-          {subText}
-        </span>
+      <div>
+        <button
+          className="btn flex h-16 w-full items-center justify-center border-none bg-[#00396E] text-lg text-white hover:bg-[#00396E]"
+          onClick={btnEvent}
+        >
+          {btnText}
+        </button>
+        <div className="mt-2 text-right">
+          <span className="cursor-pointer text-[#9B9B9B]" onClick={subEvent}>
+            {subText}
+          </span>
+        </div>
       </div>
     </div>
   )
