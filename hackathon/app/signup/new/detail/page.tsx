@@ -28,7 +28,7 @@ export default function SignUpDetailPage() {
     ]).then(() => {
       signIn('custom', {
         id: localStorage.getItem('id'),
-        pw: localStorage.getItem('pw'),
+        password: localStorage.getItem('pw'),
         callbackUrl: '/',
       })
     })
