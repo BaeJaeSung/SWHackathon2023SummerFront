@@ -19,7 +19,7 @@ export const authOption = {
         })
         console.log(res.data)
         if (res.data) {
-          return {}
+          return { id: credentials?.id }
         }
         return null
       },

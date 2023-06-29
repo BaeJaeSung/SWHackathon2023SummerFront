@@ -171,7 +171,7 @@ export default function SignUpPhotoPage() {
 
   return (
     <SignUpLayout
-      textTop="00님의"
+      textTop={`${localStorage.getItem('name')}님의`}
       textBottom="사진을 등록해주세요"
       btnText="다음"
       btnEvent={onClick}

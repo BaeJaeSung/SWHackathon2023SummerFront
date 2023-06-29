@@ -1,51 +1,55 @@
 'use client'
+import SignInLayout from '@/components/signInLayout'
 import { useRouter } from 'next/navigation'
-import SignUpLayout from '@/components/signUpLayout'
-import ICON_NEW from '@/public/new.png'
-import ICON_OLD from '@/public/old.png'
 import Image from 'next/image'
+import LOGO from '@/public/logo.png'
 import { useState } from 'react'
 
 export default function SignUpPage() {
   const router = useRouter()
-  const [type, setType] = useState(-1)
-  const onClick = () => {
-    router.push('/signup/new/name')
-    localStorage.setItem('type', `${type}`)
+
+  const [id, setId] = useState('')
+  const [pw, setPw] = useState('')
+
+  const onClickSignIn = () => {
+    router.push('/signin')
   }
-  const onClickNew = () => {
-    setType(0)
+  function onClickSignUp() {
+    localStorage.setItem('id', id)
+    localStorage.setItem('pw', pw)
+    router.push('/signup/type')
   }
-  const onClickOld = () => {
-    setType(1)
-  }
+
   return (
-    <SignUpLayout
-      textTop="반갑습니다!"
-      textBottom="청년이신가요 사장님이신가요"
-      btnText="다음"
-      btnEvent={onClick}
+    <SignInLayout
+      textTop="환영합니다:)"
+      textBottom="새로운 계정을 생성해주세요!"
+      btnText="회원가입"
+      btnEvent={onClickSignUp}
+      subEvent={onClickSignIn}
+      subText='로그인'
     >
-      <div className="flex flex-col gap-5">
-        <div
-          className={`flex h-56 cursor-pointer flex-col justify-between rounded-md ${
-            type == 0 ? 'bg-[#8F00FF]' : 'bg-gray-400'
-          } p-10 hover:bg-[#8F00FF]`}
-          onClick={onClickNew}
-        >
-          <Image src={ICON_NEW} width={48} height={48} alt="청년" />
-          <div className="text-2xl font-semibold text-white">청년이에요</div>
-        </div>
-        <div
-          className={`${type == 1 ? 'bg-[#35FF6E]' : 'bg-gray-300'} rounded-m
-            flex h-56 cursor-pointer flex-col justify-between p-10
-          hover:bg-[#35FF6E]`}
-          onClick={onClickOld}
-        >
-          <Image src={ICON_OLD} width={48} height={48} alt="자영업자" />
-          <div className="text-2xl font-semibold">사장님이에요</div>
-        </div>
+      <div className="mb-10 flex items-center justify-center">
+        <Image src={LOGO} width={150} height={150} alt="로고" />
       </div>
-    </SignUpLayout>
+      <div className="flex flex-col gap-3">
+        <input
+          id="id"
+          type="text"
+          placeholder="아이디 입력"
+          className="input my-1 w-full bg-white "
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+        />
+        <input
+          id="pw"
+          type="password"
+          placeholder="비밀번호 입력"
+          className="input my-1 w-full bg-white"
+          value={pw}
+          onChange={(e) => setPw(e.target.value)}
+        />
+      </div>
+    </SignInLayout>
   )
 }
