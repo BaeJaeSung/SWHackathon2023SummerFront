@@ -86,7 +86,7 @@ export default function SignUpPhotoPage() {
     if (photo1File) {
       const params1 = {
         Bucket: 'swhackathon',
-        Key: 'name' + '_1.jpg',
+        Key: localStorage.getItem('id') + '_1.jpg',
         Body: photo1File,
       }
 
@@ -102,7 +102,7 @@ export default function SignUpPhotoPage() {
     if (photo2File) {
       const params2 = {
         Bucket: BUCKET,
-        Key: 'name' + '_2.jpg',
+        Key: localStorage.getItem('id') + '_2.jpg',
         Body: photo2File,
       }
 
@@ -118,7 +118,7 @@ export default function SignUpPhotoPage() {
     if (photo3File) {
       const params3 = {
         Bucket: BUCKET,
-        Key: 'name' + '_3.jpg',
+        Key: localStorage.getItem('id') + '_3.jpg',
         Body: photo3File,
       }
 
@@ -134,7 +134,7 @@ export default function SignUpPhotoPage() {
     if (photo4File) {
       const params4 = {
         Bucket: BUCKET,
-        Key: 'name' + '_4.jpg',
+        Key: localStorage.getItem('id') + '_4.jpg',
         Body: photo4File,
       }
 
