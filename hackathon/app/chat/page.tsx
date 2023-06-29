@@ -3,13 +3,50 @@ import Image from 'next/image'
 import Logo from '@/public/logo.png'
 import Conf from '@/public/conf.png'
 import Conv from '@/public/conv.png'
-import Green from '@/public/green.svg'
-import Purple from '@/public/purple.svg'
 import LeftIcon from '@/public/chevron_left_FILL0_wght400_GRAD0_opsz48.svg'
 import { useState } from 'react'
+import ChatStart from '@/components/chatStart'
+import Green from '@/public/green.svg'
+import Purple from '@/public/purple.svg'
+import ChatEnd from '@/components/chatEnd'
 
 export default function ChatPage() {
   const [visible, setVisible] = useState(false)
+  const [title, setTitle] = useState('야간 편의점')
+  const [text, setText] = useState('')
+  const [chatList, setChatList] = useState({
+    '야간 편의점': [
+      { type: '0', text: '해당 일에 관심이 있습니다.', date: '12:41' },
+      {
+        type: '1',
+        text: '언제부터 일을 시작하실 수 있나요?',
+        date: '12:42',
+      },
+    ],
+    '행사 매니저': [
+      { type: '1', text: '시급 13,000원 어떤가요?', date: '11:43' },
+      {
+        type: '0',
+        text: '좋습니다!',
+        date: '11:45',
+      },
+    ],
+  })
+  const chat = (e) => {
+    e.preventDefault()
+    setChatList({
+      ...chatList,
+      [title]: [
+        ...chatList[title],
+        {
+          text: text,
+          type: localStorage.getItem('type'),
+          date: `${new Date().getHours()}:${new Date().getMinutes()}`,
+        },
+      ],
+    })
+    setText('')
+  }
   return localStorage.getItem('type') == '0' ? (
     <>
       <h2 className="text-2xl font-bold">나와 매칭된 사장님</h2>
@@ -44,7 +81,10 @@ export default function ChatPage() {
       <div className="flex w-full flex-wrap gap-5 overflow-y-auto">
         <div
           className="flex h-24 w-full shrink-0 cursor-pointer flex-nowrap items-center gap-3 rounded-lg bg-white p-5"
-          onClick={() => setVisible(!visible)}
+          onClick={() => {
+            setVisible(!visible)
+            setTitle('야간 편의점')
+          }}
         >
           <div className="rounded-full  pr-1  text-white">
             <Image src={Purple} alt="profile" width={50} height={50} />
@@ -58,7 +98,10 @@ export default function ChatPage() {
         </div>
         <div
           className="flex h-24 w-full shrink-0 cursor-pointer flex-nowrap items-center gap-3 rounded-lg bg-white p-5"
-          onClick={() => setVisible(!visible)}
+          onClick={() => {
+            setVisible(!visible)
+            setTitle('행사 매니저')
+          }}
         >
           <div className="rounded-full  pr-1  text-white">
             <Image src={Purple} alt="profile" width={50} height={50} />
@@ -76,8 +119,7 @@ export default function ChatPage() {
       >
         <nav className="relative flex h-24 w-full flex-col items-center justify-center gap-2 py-3">
           <Image src={Logo} width={35} height={35} alt="logo" />
-          <p className="text-lg font-bold text-white">한국카페</p>
-
+          <p className="text-lg font-bold text-white">{title}</p>
           <Image
             src={LeftIcon}
             width={40}
@@ -90,36 +132,40 @@ export default function ChatPage() {
           />
         </nav>
         <div className="h-full overflow-y-auto p-5">
-          <div className="chat chat-start">
-            <div className="chat-bubble relative bg-white p-4 text-black">
-              <Image
-                src={Green}
-                width={35}
-                height={35}
-                alt="green"
-                className="absolute -top-4 left-2"
+          {chatList[title].map((item, index) =>
+            localStorage.getItem('type') == item.type ? (
+              <ChatEnd
+                text={item.text}
+                type={item.type}
+                date={item.date}
+                key={index}
               />
-              안녕하세요
-            </div>
-            <div className="chat-footer mt-2 text-xs text-white">12:41</div>
-          </div>
-          <div className="chat chat-end relative">
-            <div className="chat-bubble relative bg-white p-4 text-black">
-              <Image
-                src={Purple}
-                width={35}
-                height={35}
-                alt="green"
-                className="absolute -top-4 right-2"
+            ) : (
+              <ChatStart
+                text={item.text}
+                type={item.type}
+                date={item.date}
+                key={index}
               />
-              안녕하세요 이래영이라고 합니다.
-            </div>
-            <div className="chat-footer mt-2 text-xs text-white">12:45</div>
-          </div>
+            ),
+          )}
         </div>
         <div className="flex h-24 items-center justify-between gap-3 rounded-t-2xl bg-[#ECEFF4] px-5">
-          <input type="text" className="input grow rounded-full bg-white" />
-          <button className="w-16 rounded-2xl bg-[#C467EF] px-3 py-2 text-white">
+          <input
+            type="text"
+            className="input grow rounded-full bg-white"
+            value={text}
+            onChange={(e) => {
+              setText(e.target.value)
+            }}
+            onKeyDown={(e) => {
+              e.key == 'Enter' && chat(e)
+            }}
+          />
+          <button
+            className="w-16 rounded-2xl bg-[#C467EF] px-3 py-2 text-white"
+            onClick={chat}
+          >
             전송
           </button>
         </div>
