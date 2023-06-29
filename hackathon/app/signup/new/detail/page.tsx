@@ -16,18 +16,18 @@ export default function SignUpDetailPage() {
     >
       <div className="flex flex-col gap-5">
         <div>
-          <label htmlFor="detail" className="cursor-pointer">
+          <label htmlFor="detail" className="cursor-pointer font-semibold">
             나의 정보
           </label>
           <input
             id="detail"
             type="text"
-            className="bg-white-200 input mt-2 w-full "
+            className="bg-white-200 input mt-1 w-full"
           />
         </div>
         <div>
-          <label htmlFor="edu" className="cursor-pointer" className="label">
-            {/*<span className="label-text"></span>*/}학력
+          <label htmlFor="edu" className="label cursor-pointer font-semibold">
+            학력
           </label>
           <select id="edu" className="select w-full max-w-xs">
             <option selected>대졸</option>
@@ -37,21 +37,26 @@ export default function SignUpDetailPage() {
           </select>
         </div>
         <div>
-          <div className="mb-3">아르바이트 근무 경험이 있다면?</div>
+          <div className="my-3 font-semibold">
+            아르바이트 근무 경험이 있다면?
+          </div>
           <div>
-            <label htmlFor="company" className="cursor-pointer">
+            <label htmlFor="company" className="cursor-pointer font-semibold">
               회사명
             </label>
             <input
               id="company"
               type="text"
-              className="bg-white-200 input mt-2 w-full"
+              className="bg-white-200 input mt-1 w-full"
             />
           </div>
         </div>
         <div>
-          <label htmlFor="period" className="cursor-pointer" className="label">
-            {/*<span className="label-text"></span>*/}근무 기간
+          <label
+            htmlFor="period"
+            className="label cursor-pointer font-semibold"
+          >
+            근무 기간
           </label>
           <select id="period" className="select w-full max-w-xs">
             <option selected>3일 이하</option>
@@ -65,13 +70,13 @@ export default function SignUpDetailPage() {
         </div>
         <div>
           <div>
-            <label htmlFor="exp" className="cursor-pointer">
+            <label htmlFor="exp" className="cursor-pointer font-semibold">
               근무를 통한 나의 경험
             </label>
             <input
               id="exp"
               type="text"
-              className="bg-white-200 input mt-2 w-full"
+              className="bg-white-200 input mt-1 w-full"
             />
           </div>
         </div>

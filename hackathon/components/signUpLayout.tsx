@@ -25,12 +25,16 @@ export default function SignUpLayout({
         {textBottom}
       </h2>
       <div className="mt-12 h-full">{children}</div>
-      <button
-        className="hover:bg-[#292929] btn w-full border-none bg-[#292929] text-[#35FF6E]"
-        onClick={btnEvent}
-      >
-        {btnText}
-      </button>
+      {
+        (btnText!=="로그인" &&       
+        <button
+          className="hover:bg-[#292929] btn w-full border-none bg-[#292929] text-[#35FF6E]"
+          onClick={btnEvent}
+        >
+          {btnText}
+        </button>)
+      }
+
     </div>
   )
 }
