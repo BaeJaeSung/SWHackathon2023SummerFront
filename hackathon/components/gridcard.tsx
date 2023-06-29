@@ -48,7 +48,7 @@ export default function GridCard({ showFull, setShowFull }: GridCardProps) {
           </span>
         </div>
       </div>
-      <div className={`mb-5 text-[#292929] ${showFull ? '' : 'truncate	'}`}>
+      <div className={` mb-5 text-[#292929] ${showFull ? '' : 'truncate	'}`}>
         안녕하세요, 카페 아르바이트를 구하고 있는 22살 이래영입니다. 저는
         바리스타 자격증 1급이 있으며, 책임감이 강합니다. 최근 1년간 집에서
         무기력하게 지내다 빛나는 연결을 접한 후 다시 바리스타의 꿈을 꾸기
