@@ -9,7 +9,8 @@ interface GridCardProps {
   setShowFull: Dispatch<SetStateAction<boolean>>
   nickname: string
   info: string
-  studycareer: string
+  study_career: string
+  age:number
   careers: {
     company_name: string
     period: number
@@ -23,7 +24,7 @@ export default function GridCard({
   setShowFull,
   nickname,
   info,
-  studycareer,
+  study_career,
   careers,
   id
 }: GridCardProps) {
@@ -76,7 +77,7 @@ export default function GridCard({
 
       <div className="mb-1 font-semibold text-[#292929]">
         학력
-        <span className="font-normal text-[#535353]">&nbsp;{studycareer}</span>
+        <span className="font-normal text-[#535353]">&nbsp;{study_career}</span>
       </div>
       <div className="mb-4 font-semibold text-[#292929]">
         아르바이트 근무 경험

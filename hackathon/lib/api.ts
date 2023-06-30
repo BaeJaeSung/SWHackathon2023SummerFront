@@ -34,7 +34,8 @@ function fetchGetDataExist(url:string) {
       });
   });
 }
-export const getData = async (url:string) => {
+export const getData = async (url: string) => {
+  // 있으먄 true
   return fetchGetDataExist(url)
     .then(data => {
       return true;
@@ -104,7 +105,19 @@ export const matchLoadCandidateCeo = async (id: string) => {
   };
   return fetchData('match/load_candidate_ceo', postData)
     .then(data => {
-      return data;
+      console.log("CEO data", data)
+      return data.map(({ id, name, phone_number, intro, employee_count, type, representative, works }: any) => {
+        return {
+          id,
+          name,
+          phone_number,
+          intro,
+          employee_count,
+          type,
+          representative,
+          works,
+        }
+      })
       // 데이터를 활용하여 추가적인 작업 수행
     })
     .catch(error => {
@@ -271,7 +284,8 @@ export const userMyInfo = async (id: string) => {
   };
   return fetchData('user/my_info', postData)
     .then(data => {
-      return data;
+      console.log("API 호출 : ", data)
+      return data
       // 데이터를 활용하여 추가적인 작업 수행
     })
     .catch(error => {
