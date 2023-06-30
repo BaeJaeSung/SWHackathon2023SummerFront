@@ -5,14 +5,7 @@ import LOGO from '@/public/logo.png'
 import { getSession, signIn } from 'next-auth/react'
 import { useState } from 'react'
 import SignInLayout from '@/components/signInLayout'
-import axios from 'axios'
-import { userJoin, userLogin, matchLoadCandidateHiki, matchLoadCandidateCeo,
-  chatSend, chatList, chatContents, matchChoice, matchReceived, 
-  matchMyApply, userRegisterProfileText, userRegisterProfileStudyCareer, 
-  userRegisterCareer, userMyInfo, chatgptCreate } from '@/lib/api'
-  //userJoin hikiwef 확인
-
-
+import { userMyInfo } from '@/lib/api'
 
 export default function SigninPage() {
   
@@ -24,7 +17,6 @@ export default function SigninPage() {
   //userLogin('hikiwef', '1234')
   //matchLoadCandidateHiki('CiNftk7044')
   
-  
   const router = useRouter()
 
   const [id, setId] = useState('')
@@ -35,6 +27,10 @@ export default function SigninPage() {
   }
   function onClickSignIn() {
     signIn('custom', { id, password: pw, callbackUrl: '/' })
+    userMyInfo(id).then((res) => {
+      localStorage.setItem('id', id)
+      localStorage.setItem('type', String(res.type))
+    })
     localStorage.getItem(id)
   }
 

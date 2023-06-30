@@ -102,8 +102,8 @@ export default function MainCard({
     const choice = 1
 
 
-    if (type == 0) setItems(items.filter((item) => item.nickname !== nickname))
-    else setItems(items.filter((item) => item.name !== name))
+    if (type == 0) setItems(items.filter((item) => item.name !== name))
+    else setItems(items.filter((item) => item.nickname !== nickname))
   }
   const [isImageLoaded, setIsImageLoaded] = useState(false)
 
