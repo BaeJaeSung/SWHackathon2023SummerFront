@@ -38,7 +38,9 @@ export default function MainPage() {
   }
 
   useEffect(() => {
-    
+    if (items.length == 0) {
+      callFunc(type);
+    }
   },[items])
 
 
